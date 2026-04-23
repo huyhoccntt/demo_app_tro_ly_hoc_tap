@@ -21,8 +21,15 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
+        cache: 'npm'
 
-    - name: Build
+    - name: Clean install dependencies
       run: |
-        npm install
-        npx webpack
+        npm ci || npm install
+        npm install -D webpack-cli
+
+    - name: Build with webpack
+      run: npx webpack
+
+    - name: Run npm audit (optional)
+      run: npm audit --audit-level=high
