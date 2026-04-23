@@ -1,4 +1,3 @@
-name: NodeJS with Webpack
 
 on:
   push:
