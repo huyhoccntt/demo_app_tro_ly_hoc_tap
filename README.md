@@ -1,4 +1,4 @@
-# StudyMate AI
+# Trợ lý AI
 
 Bo khung fullstack cho app tro ly AI phuc vu viec hoc, duoc nang cap tu cac trang HTML san co sang:
 
