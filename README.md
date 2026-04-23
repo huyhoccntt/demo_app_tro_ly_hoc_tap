@@ -29,7 +29,7 @@ npm run dev
 npm run dev:frontend
 ```
 
-Frontend mac dinh chay o `http://localhost:5173`, backend o `(http://127.0.0.1:5000/)`.
+Frontend mac dinh chay o `http://localhost:5173`, backend o `http://localhost:5000`.
 
 ## PostgreSQL
 

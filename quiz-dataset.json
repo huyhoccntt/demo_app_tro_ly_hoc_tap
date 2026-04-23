@@ -1,0 +1,1076 @@
+[
+  {
+    "id": 1,
+    "subject": "Toán",
+    "grade": "12",
+    "topic": "Giải tích",
+    "difficulty": "Khá",
+    "question": "Cho hàm số y = x^3 - 3x^2 + 2. Giá trị cực đại của hàm số này là bao nhiêu?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answer": "2",
+    "explanation": "Tính y' = 3x^2 - 6x = 3x(x - 2). Cực đại tại x = 0, giá trị y = 2."
+  },
+  {
+    "id": 2,
+    "subject": "Toán",
+    "grade": "12",
+    "topic": "Hình học",
+    "difficulty": "Cơ bản",
+    "question": "Trong tam giác vuông, cạnh huyền dài 10 và một cạnh góc vuông dài 6. Độ dài cạnh còn lại là bao nhiêu?",
+    "options": [
+      "6",
+      "8",
+      "4",
+      "3"
+    ],
+    "answer": "8",
+    "explanation": "Theo định lý Pythagore: x^2 + 6^2 = 10^2 -> x^2 = 64 -> x = 8."
+  },
+  {
+    "id": 3,
+    "subject": "Vật lý",
+    "grade": "12",
+    "topic": "Dao động cơ",
+    "difficulty": "Khá",
+    "question": "Một con lắc lò xo dao động điều hòa với phương trình x = 5 cos(4t) (cm). Chu kỳ dao động là bao nhiêu?",
+    "options": [
+      "π/2 s",
+      "π s",
+      "π/4 s",
+      "2π s"
+    ],
+    "answer": "π/2 s",
+    "explanation": "Tần số góc w = 4 rad/s. Chu kỳ T = 2π/w = 2π/4 = π/2."
+  },
+  {
+    "id": 4,
+    "subject": "Vật lý",
+    "grade": "12",
+    "topic": "Điện từ",
+    "difficulty": "Nâng cao",
+    "question": "Trong mạch RLC nối tiếp, hệ số chất lượng Q = 10, điện trở R = 10Ω. Điện cảm L bằng bao nhiêu?",
+    "options": [
+      "0.1 H",
+      "1 H",
+      "10 H",
+      "100 H"
+    ],
+    "answer": "0.1 H",
+    "explanation": "Q = ωL/R = 10, R = 10Ω, suy ra ωL = 100, L = 100/ω."
+  },
+  {
+    "id": 5,
+    "subject": "Hóa học",
+    "grade": "12",
+    "topic": "Hóa hữu cơ",
+    "difficulty": "Cơ bản",
+    "question": "Este là hợp chất hữu cơ nào?",
+    "options": [
+      "R-COOH",
+      "R-COOR'",
+      "R-OH",
+      "R-NH2"
+    ],
+    "answer": "R-COOR'",
+    "explanation": "Este có công thức chung R-COOR' với R, R' là nhóm alkyl."
+  },
+  {
+    "id": 6,
+    "subject": "Hóa học",
+    "grade": "12",
+    "topic": "Hóa vô cơ",
+    "difficulty": "Khá",
+    "question": "Kim loại nào có độ âm điện cao nhất?",
+    "options": [
+      "Na",
+      "K",
+      "Ca",
+      "Mg"
+    ],
+    "answer": "K",
+    "explanation": "Trong kim loại kiềm, K có độ âm điện thấp nhất (âm điện cao nhất)."
+  },
+  {
+    "id": 7,
+    "subject": "Ngữ văn",
+    "grade": "12",
+    "topic": "Văn học",
+    "difficulty": "Khá",
+    "question": "Tác phẩm \"Truyện Kiều\" của Nguyễn Du thuộc thể loại gì?",
+    "options": [
+      "Truyện thơ Nôm",
+      "Truyện ngắn",
+      "Tiểu thuyết",
+      "Kịch thơ"
+    ],
+    "answer": "Truyện thơ Nôm",
+    "explanation": "\"Truyện Kiều\" là truyện thơ Nôm, gồm 3254 câu thơ lục bát."
+  },
+  {
+    "id": 8,
+    "subject": "Ngữ văn",
+    "grade": "12",
+    "topic": "Văn học",
+    "difficulty": "Nâng cao",
+    "question": "Nhân vật chính trong \"Chí Phèo\" của Nam Cao là ai?",
+    "options": [
+      "Chí Phèo",
+      "Thị Nở",
+      "Lão Hạc",
+      "Với Lão"
+    ],
+    "answer": "Chí Phèo",
+    "explanation": "Chí Phèo là nhân vật chính, biểu tượng cho số phận con người bị tha hóa."
+  },
+  {
+    "id": 9,
+    "subject": "Tiếng Anh",
+    "grade": "12",
+    "topic": "Ngữ pháp",
+    "difficulty": "Cơ bản",
+    "question": "Choose the correct form: She _____ to school every day.",
+    "options": [
+      "go",
+      "goes",
+      "going",
+      "gone"
+    ],
+    "answer": "goes",
+    "explanation": "Với chủ ngữ ngôi thứ ba số ít, động từ thêm -s: go -> goes."
+  },
+  {
+    "id": 10,
+    "subject": "Tiếng Anh",
+    "grade": "12",
+    "topic": "Từ vựng",
+    "difficulty": "Khá",
+    "question": "Từ nào sau đây có nghĩa là \"khuyến khích\"?",
+    "options": [
+      "encourage",
+      "discourage",
+      "prevent",
+      "forbid"
+    ],
+    "answer": "encourage",
+    "explanation": "Encourage = khuyến khích, trái nghĩa với discourage = ngăn cản."
+  },
+  {
+    "id": 11,
+    "subject": "Toán",
+    "grade": "11",
+    "topic": "Hình học",
+    "difficulty": "Cơ bản",
+    "question": "Trong mặt phẳng tọa độ, phương trình đường thẳng qua 2 điểm (1,2) và (3,4) là?",
+    "options": [
+      "y = x + 1",
+      "y = x",
+      "y = 2x - 1",
+      "y = x + 2"
+    ],
+    "answer": "y = x + 1",
+    "explanation": "Hệ số góc m = (4-2)/(3-1) = 1, phương trình y - 2 = 1(x - 1) => y = x + 1."
+  },
+  {
+    "id": 12,
+    "subject": "Vật lý",
+    "grade": "11",
+    "topic": "Cơ học",
+    "difficulty": "Khá",
+    "question": "Một vật rơi tự do từ độ cao 20m. Vận tốc khi chạm đất là bao nhiêu? (g = 10m/s²)",
+    "options": [
+      "10 m/s",
+      "14 m/s",
+      "20 m/s",
+      "40 m/s"
+    ],
+    "answer": "20 m/s",
+    "explanation": "v = √(2gh) = √(2*10*20) = √400 = 20 m/s."
+  },
+  {
+    "id": 13,
+    "subject": "Hóa học",
+    "grade": "11",
+    "topic": "Hóa vô cơ",
+    "difficulty": "Cơ bản",
+    "question": "Chất nào sau đây là bazơ?",
+    "options": [
+      "HCl",
+      "NaOH",
+      "CO2",
+      "H2SO4"
+    ],
+    "answer": "NaOH",
+    "explanation": "NaOH là bazơ, HCl và H2SO4 là axit, CO2 là khí."
+  },
+  {
+    "id": 14,
+    "subject": "Ngữ văn",
+    "grade": "11",
+    "topic": "Ngữ pháp",
+    "difficulty": "Cơ bản",
+    "question": "Từ loại của từ \"chạy\" trong câu \"Cậu bé chạy nhanh\" là gì?",
+    "options": [
+      "Danh từ",
+      "Động từ",
+      "Tính từ",
+      "Phó từ"
+    ],
+    "answer": "Động từ",
+    "explanation": "\"Chạy\" là động từ chỉ hành động."
+  },
+  {
+    "id": 15,
+    "subject": "Tiếng Anh",
+    "grade": "11",
+    "topic": "Ngữ pháp",
+    "difficulty": "Khá",
+    "question": "Complete the sentence: If I _____ rich, I would travel around the world.",
+    "options": [
+      "am",
+      "were",
+      "was",
+      "be"
+    ],
+    "answer": "were",
+    "explanation": "Câu điều kiện loại 2: If + S + were/V-ed, S + would + V."
+  },
+  {
+    "id": 16,
+    "subject": "Toán",
+    "grade": "10",
+    "topic": "Đại số",
+    "difficulty": "Cơ bản",
+    "question": "Giải phương trình: 2x + 3 = 7",
+    "options": [
+      "x = 1",
+      "x = 2",
+      "x = 3",
+      "x = 4"
+    ],
+    "answer": "x = 2",
+    "explanation": "2x + 3 = 7 => 2x = 4 => x = 2."
+  },
+  {
+    "id": 17,
+    "subject": "Vật lý",
+    "grade": "10",
+    "topic": "Cơ học",
+    "difficulty": "Cơ bản",
+    "question": "Đơn vị của lực trong hệ SI là?",
+    "options": [
+      "N",
+      "J",
+      "W",
+      "Pa"
+    ],
+    "answer": "N",
+    "explanation": "N (Newton) là đơn vị của lực."
+  },
+  {
+    "id": 18,
+    "subject": "Hóa học",
+    "grade": "10",
+    "topic": "Cơ bản",
+    "difficulty": "Cơ bản",
+    "question": "Nguyên tử gồm những hạt nào?",
+    "options": [
+      "Electron và proton",
+      "Neutron và proton",
+      "Electron, proton, neutron",
+      "Chỉ electron"
+    ],
+    "answer": "Electron, proton, neutron",
+    "explanation": "Nguyên tử gồm 3 hạt cơ bản: electron, proton, neutron."
+  },
+  {
+    "id": 19,
+    "subject": "Ngữ văn",
+    "grade": "10",
+    "topic": "Ngữ pháp",
+    "difficulty": "Cơ bản",
+    "question": "Từ loại của từ \"đỏ\" trong câu \"Hoa đỏ\" là gì?",
+    "options": [
+      "Danh từ",
+      "Động từ",
+      "Tính từ",
+      "Đại từ"
+    ],
+    "answer": "Tính từ",
+    "explanation": "\"Đỏ\" là tính từ chỉ màu sắc."
+  },
+  {
+    "id": 20,
+    "subject": "Tiếng Anh",
+    "grade": "10",
+    "topic": "Từ vựng",
+    "difficulty": "Cơ bản",
+    "question": "What is the meaning of \"happy\"?",
+    "options": [
+      "Buồn",
+      "Vui vẻ",
+      "Giận dữ",
+      "Mệt mỏi"
+    ],
+    "answer": "Vui vẻ",
+    "explanation": "Happy = vui vẻ, hạnh phúc."
+  },
+  {
+    "id": 21,
+    "subject": "Sinh học",
+    "grade": "10",
+    "topic": "Di truyền",
+    "difficulty": "Cơ bản",
+    "question": "Gen là đơn vị di truyền cơ bản nằm trên nhiễm sắc thể. Ai là người phát hiện ra gen?",
+    "options": [
+      "Charles Darwin",
+      "Gregor Mendel",
+      "Watson và Crick",
+      "Louis Pasteur"
+    ],
+    "answer": "Gregor Mendel",
+    "explanation": "Gregor Mendel là cha đẻ của di truyền học hiện đại với các thí nghiệm về đậu Hà Lan."
+  },
+  {
+    "id": 22,
+    "subject": "Sinh học",
+    "grade": "10",
+    "topic": "Di truyền",
+    "difficulty": "Khá",
+    "question": "Ở người, nhóm máu được di truyền theo quy luật nào?",
+    "options": [
+      "Di truyền liên kết giới tính",
+      "Di truyền theo quy luật Mendel",
+      "Di truyền đa gen",
+      "Di truyền theo quy luật di truyền tế bào"
+    ],
+    "answer": "Di truyền đa gen",
+    "explanation": "Nhóm máu ABO được kiểm soát bởi nhiều gen và có kiểu di truyền phức tạp."
+  },
+  {
+    "id": 23,
+    "subject": "Sinh học",
+    "grade": "11",
+    "topic": "Sinh thái học",
+    "difficulty": "Cơ bản",
+    "question": "Hệ sinh thái là tập hợp các thành phần nào?",
+    "options": [
+      "Chỉ sinh vật",
+      "Chỉ môi trường vật lý",
+      "Sinh vật và môi trường sống",
+      "Chỉ các loài thực vật"
+    ],
+    "answer": "Sinh vật và môi trường sống",
+    "explanation": "Hệ sinh thái bao gồm quần xã sinh vật và môi trường vật lý, hóa học nơi chúng sống."
+  },
+  {
+    "id": 24,
+    "subject": "Sinh học",
+    "grade": "11",
+    "topic": "Sinh thái học",
+    "difficulty": "Khá",
+    "question": "Chuỗi thức ăn là gì?",
+    "options": [
+      "Thứ tự các loài ăn nhau",
+      "Danh sách các loài trong hệ sinh thái",
+      "Quá trình quang hợp",
+      "Vòng tuần hoàn nitơ"
+    ],
+    "answer": "Thứ tự các loài ăn nhau",
+    "explanation": "Chuỗi thức ăn thể hiện mối quan hệ dinh dưỡng giữa các loài trong hệ sinh thái."
+  },
+  {
+    "id": 25,
+    "subject": "Sinh học",
+    "grade": "12",
+    "topic": "Công nghệ sinh học",
+    "difficulty": "Nâng cao",
+    "question": "Công nghệ gen là gì?",
+    "options": [
+      "Nuôi cấy mô",
+      "Sử dụng enzyme hạn chế để cắt DNA",
+      "Công nghệ sản xuất vaccine",
+      "Công nghệ nhân giống vô tính"
+    ],
+    "answer": "Sử dụng enzyme hạn chế để cắt DNA",
+    "explanation": "Công nghệ gen sử dụng enzyme hạn chế để cắt, ghép và nhân bản DNA."
+  },
+  {
+    "id": 26,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sai số trong phép đo",
+    "difficulty": "Cơ bản",
+    "question": "Tính giá trị trung bình của các lần đo: A1=4,2; A2=4,3; A3=4,5; A4=4,2",
+    "options": ["4,2", "4,3", "4,4", "4,5"],
+    "answer": "4,3",
+    "explanation": "Giá trị trung bình = (4,2 + 4,3 + 4,5 + 4,2)/4 = 4,3"
+  },
+  {
+    "id": 27,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sai số trong phép đo",
+    "difficulty": "Cơ bản",
+    "question": "Sai số tuyệt đối được tính bằng công thức nào?",
+    "options": [
+      "ΔA = ΔA_tb",
+      "ΔA = ΔA_dc",
+      "ΔA = ΔA_tb + ΔA_dc",
+      "ΔA = ΔA_tb - ΔA_dc"
+    ],
+    "answer": "ΔA = ΔA_tb + ΔA_dc",
+    "explanation": "Sai số tuyệt đối là tổng sai số ngẫu nhiên trung bình và sai số dụng cụ."
+  },
+  {
+    "id": 28,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sai số trong phép đo",
+    "difficulty": "Cơ bản",
+    "question": "Công thức tính sai số tỉ đối là:",
+    "options": [
+      "δA = ΔA × 100%",
+      "δA = (ΔA/(overline{A})) × 100%",
+      "δA = ((overline{A})/ΔA) × 100%",
+      "δA = (ΔA - (overline{A})) × 100%"
+    ],
+    "answer": "δA = (ΔA/(overline{A})) × 100%",
+    "explanation": "Sai số tỉ đối = (sai số tuyệt đối / giá trị trung bình) × 100%"
+  },
+  {
+    "id": 29,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Độ dịch chuyển",
+    "difficulty": "Cơ bản",
+    "question": "Độ dịch chuyển được tính theo công thức nào?",
+    "options": ["d = x1 + x2", "d = x2 - x1", "d = x1 - x2", "d = (x1 + x2)/2"],
+    "answer": "d = x2 - x1",
+    "explanation": "Độ dịch chuyển là độ biến thiên tọa độ: d = x2 - x1"
+  },
+  {
+    "id": 30,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Tốc độ và vận tốc",
+    "difficulty": "Cơ bản",
+    "question": "Công thức tính tốc độ trung bình là:",
+    "options": ["v = s.t", "v = s/t", "v = t/s", "v = s + t"],
+    "answer": "v = s/t",
+    "explanation": "Tốc độ trung bình = quãng đường / thời gian"
+  },
+  {
+    "id": 31,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Tốc độ và vận tốc",
+    "difficulty": "Cơ bản",
+    "question": "Vận tốc trung bình là đại lượng gì?",
+    "options": ["Vô hướng", "Vector", "Không có hướng", "Chỉ có độ lớn"],
+    "answer": "Vector",
+    "explanation": "Vận tốc là đại lượng vector, có cả độ lớn và hướng."
+  },
+  {
+    "id": 32,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Tốc độ và vận tốc",
+    "difficulty": "Trung bình",
+    "question": "Công thức cộng vận tốc cùng chiều là:",
+    "options": [
+      "v13 = v12 - v23",
+      "v13 = v12 + v23",
+      "v13 = |v12 - v23|",
+      "v13 = √(v12² + v23²)"
+    ],
+    "answer": "v13 = v12 + v23",
+    "explanation": "Hai vận tốc cùng chiều thì cộng đại số."
+  },
+  {
+    "id": 33,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Tốc độ và vận tốc",
+    "difficulty": "Trung bình",
+    "question": "Công thức cộng vận tốc ngược chiều là:",
+    "options": [
+      "v13 = v12 + v23",
+      "v13 = v12 - v23",
+      "v13 = |v12 - v23|",
+      "v13 = √(v12² + v23²)"
+    ],
+    "answer": "v13 = |v12 - v23|",
+    "explanation": "Hai vận tốc ngược chiều thì trừ và lấy giá trị tuyệt đối."
+  },
+  {
+    "id": 34,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Tốc độ và vận tốc",
+    "difficulty": "Trung bình",
+    "question": "Hai vận tốc vuông góc, vận tốc tổng hợp được tính bằng:",
+    "options": [
+      "v13 = v12 + v23",
+      "v13 = |v12 - v23|",
+      "v13 = √(v12² + v23²)",
+      "v13 = (v12 + v23)/2"
+    ],
+    "answer": "v13 = √(v12² + v23²)",
+    "explanation": "Áp dụng định lý Pythagoras cho hai vector vuông góc."
+  },
+  {
+    "id": 35,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Chuyển động thẳng biến đổi đều",
+    "difficulty": "Cơ bản",
+    "question": "Gia tốc được tính theo công thức nào?",
+    "options": ["a = Δv.Δt", "a = Δv/Δt", "a = Δt/Δv", "a = v.t"],
+    "answer": "a = Δv/Δt",
+    "explanation": "Gia tốc = độ biến thiên vận tốc / thời gian"
+  },
+  {
+    "id": 36,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Chuyển động thẳng biến đổi đều",
+    "difficulty": "Cơ bản",
+    "question": "Công thức tính vận tốc tức thời trong chuyển động thẳng biến đổi đều là:",
+    "options": ["v = v0 + a.t", "v = v0 - a.t", "v = a.t", "v = v0.t"],
+    "answer": "v = v0 + a.t",
+    "explanation": "Vận tốc tại thời điểm t: v = v0 + a.t"
+  },
+  {
+    "id": 37,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Chuyển động thẳng biến đổi đều",
+    "difficulty": "Trung bình",
+    "question": "Công thức tính độ dịch chuyển trong chuyển động thẳng biến đổi đều là:",
+    "options": [
+      "d = v0.t",
+      "d = (1/2)a.t²",
+      "d = v0.t + (1/2)a.t²",
+      "d = v0.t - (1/2)a.t²"
+    ],
+    "answer": "d = v0.t + (1/2)a.t²",
+    "explanation": "Độ dịch chuyển: d = v0.t + (1/2)a.t²"
+  },
+  {
+    "id": 38,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Chuyển động thẳng biến đổi đều",
+    "difficulty": "Trung bình",
+    "question": "Công thức độc lập với thời gian trong chuyển động thẳng biến đổi đều là:",
+    "options": [
+      "v² - v0² = 2a.d",
+      "v = v0 + a.t",
+      "d = v0.t + (1/2)a.t²",
+      "v² + v0² = 2a.d"
+    ],
+    "answer": "v² - v0² = 2a.d",
+    "explanation": "Mối liên hệ giữa vận tốc, gia tốc và độ dịch chuyển."
+  },
+  {
+    "id": 39,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sự rơi tự do",
+    "difficulty": "Cơ bản",
+    "question": "Công thức tính vận tốc trong rơi tự do là:",
+    "options": ["v = g/t", "v = g.t", "v = (1/2)gt²", "v = √(2gh)"],
+    "answer": "v = g.t",
+    "explanation": "Vận tốc rơi tự do: v = g.t (bỏ qua sức cản không khí)"
+  },
+  {
+    "id": 40,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sự rơi tự do",
+    "difficulty": "Cơ bản",
+    "question": "Quãng đường rơi trong rơi tự do được tính bằng:",
+    "options": ["h = g.t", "h = (1/2)gt", "h = (1/2)gt²", "h = gt²"],
+    "answer": "h = (1/2)gt²",
+    "explanation": "h = (1/2)gt² là quãng đường rơi tự do."
+  },
+  {
+    "id": 41,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sự rơi tự do",
+    "difficulty": "Trung bình",
+    "question": "Công thức độc lập thời gian trong rơi tự do là:",
+    "options": ["v = gt", "h = (1/2)gt²", "v² = 2gh", "v = √(2g/h)"],
+    "answer": "v² = 2gh",
+    "explanation": "Mối liên hệ giữa vận tốc và quãng đường rơi."
+  },
+  {
+    "id": 42,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sự rơi tự do",
+    "difficulty": "Trung bình",
+    "question": "Thời gian rơi của vật ném ngang phụ thuộc vào yếu tố nào?",
+    "options": [
+      "Vận tốc ném",
+      "Khối lượng vật",
+      "Độ cao ném",
+      "Cả vận tốc và độ cao"
+    ],
+    "answer": "Độ cao ném",
+    "explanation": "t = √(2H/g) chỉ phụ thuộc độ cao H."
+  },
+  {
+    "id": 43,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sự rơi tự do",
+    "difficulty": "Trung bình",
+    "question": "Tầm xa của vật ném ngang được tính bằng:",
+    "options": [
+      "L = v0.t",
+      "L = v0.√(2H/g)",
+      "L = √(2H/g)",
+      "L = v0.g.t"
+    ],
+    "answer": "L = v0.√(2H/g)",
+    "explanation": "L = v0 × thời gian rơi = v0.√(2H/g)"
+  },
+  {
+    "id": 44,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sự rơi tự do",
+    "difficulty": "Khó",
+    "question": "Phương trình quỹ đạo của vật ném ngang có dạng:",
+    "options": [
+      "y = (g/2v0²)x²",
+      "y = (2g/v0²)x²",
+      "y = (v0²/2g)x²",
+      "y = (g/v0)x"
+    ],
+    "answer": "y = (g/2v0²)x²",
+    "explanation": "Quỹ đạo là parabol: y = (g/(2v0²))x²"
+  },
+  {
+    "id": 45,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sự rơi tự do",
+    "difficulty": "Khó",
+    "question": "Độ cao cực đại trong ném xiên được tính bằng:",
+    "options": [
+      "H = (v0².sin²α)/(2g)",
+      "H = (v0².sin2α)/g",
+      "H = (v0².cos²α)/(2g)",
+      "H = (v0².sinα)/g"
+    ],
+    "answer": "H = (v0².sin²α)/(2g)",
+    "explanation": "Độ cao cực đại: H = (v0² sin²α)/(2g)"
+  },
+  {
+    "id": 46,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Sự rơi tự do",
+    "difficulty": "Khó",
+    "question": "Tầm xa trong ném xiên được tính bằng:",
+    "options": [
+      "L = (v0².sin²α)/g",
+      "L = (v0².sin2α)/g",
+      "L = (v0².cos2α)/g",
+      "L = (v0².sinα)/g"
+    ],
+    "answer": "L = (v0².sin2α)/g",
+    "explanation": "Tầm xa: L = (v0² sin2α)/g"
+  },
+  {
+    "id": 47,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Tổng hợp và phân tích lực",
+    "difficulty": "Cơ bản",
+    "question": "Hai lực cùng chiều, hợp lực được tính bằng:",
+    "options": ["F = F1 - F2", "F = F1 + F2", "F = |F1 - F2|", "F = √(F1²+F2²)"],
+    "answer": "F = F1 + F2",
+    "explanation": "Hợp lực cùng chiều bằng tổng các lực."
+  },
+  {
+    "id": 48,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Tổng hợp và phân tích lực",
+    "difficulty": "Cơ bản",
+    "question": "Hai lực ngược chiều, hợp lực được tính bằng:",
+    "options": ["F = F1 + F2", "F = F1 - F2", "F = |F1 - F2|", "F = √(F1²+F2²)"],
+    "answer": "F = |F1 - F2|",
+    "explanation": "Hợp lực ngược chiều bằng hiệu các lực."
+  },
+  {
+    "id": 49,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Tổng hợp và phân tích lực",
+    "difficulty": "Trung bình",
+    "question": "Công thức tổng hợp hai lực đồng quy theo quy tắc hình bình hành là:",
+    "options": [
+      "F = F1 + F2",
+      "F = √(F1² + F2²)",
+      "F = √(F1² + F2² + 2F1F2.cosα)",
+      "F = √(F1² + F2² - 2F1F2.cosα)"
+    ],
+    "answer": "F = √(F1² + F2² + 2F1F2.cosα)",
+    "explanation": "Áp dụng định lý hàm cos trong hình bình hành lực."
+  },
+  {
+    "id": 50,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Ba định luật Newton",
+    "difficulty": "Cơ bản",
+    "question": "Định luật II Newton được biểu diễn bằng công thức nào?",
+    "options": ["F = m/a", "F = m.a", "F = a/m", "F = m + a"],
+    "answer": "F = m.a",
+    "explanation": "Gia tốc tỉ lệ thuận với lực, tỉ lệ nghịch với khối lượng."
+  },
+  {
+    "id": 51,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Ba định luật Newton",
+    "difficulty": "Cơ bản",
+    "question": "Định luật III Newton phát biểu:",
+    "options": [
+      "F_AB = F_BA",
+      "F_AB = -F_BA",
+      "F_AB > F_BA",
+      "F_AB < F_BA"
+    ],
+    "answer": "F_AB = -F_BA",
+    "explanation": "Lực và phản lực trực đối, cùng độ lớn ngược hướng."
+  },
+  {
+    "id": 52,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Trọng lực – Lực căng – Lực ma sát",
+    "difficulty": "Cơ bản",
+    "question": "Công thức tính trọng lực là:",
+    "options": ["P = m/h", "P = m.g", "P = g/m", "P = m + g"],
+    "answer": "P = m.g",
+    "explanation": "Trọng lực = khối lượng × gia tốc trọng trường."
+  },
+  {
+    "id": 53,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Trọng lực – Lực căng – Lực ma sát",
+    "difficulty": "Trung bình",
+    "question": "Lực ma sát trượt được tính bằng công thức nào?",
+    "options": ["Fms = μ/N", "Fms = μ.N", "Fms = N/μ", "Fms = μ + N"],
+    "answer": "Fms = μ.N",
+    "explanation": "Lực ma sát trượt = hệ số ma sát × áp lực."
+  },
+  {
+    "id": 54,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Moment lực",
+    "difficulty": "Trung bình",
+    "question": "Công thức tính moment lực là:",
+    "options": ["M = F + d", "M = F/d", "M = F.d", "M = d/F"],
+    "answer": "M = F.d",
+    "explanation": "Moment lực = lực × cánh tay đòn."
+  },
+  {
+    "id": 55,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Moment lực",
+    "difficulty": "Trung bình",
+    "question": "Moment ngẫu lực được tính bằng:",
+    "options": ["M = F.d", "M = F/d", "M = F + d", "M = F - d"],
+    "answer": "M = F.d",
+    "explanation": "Moment ngẫu lực = lực × khoảng cách giữa hai giá."
+  },
+  {
+    "id": 56,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Năng lượng – Công – Công suất",
+    "difficulty": "Trung bình",
+    "question": "Công cơ học được tính theo công thức nào?",
+    "options": [
+      "A = F.s.sinα",
+      "A = F.s.cosα",
+      "A = F.s.tanα",
+      "A = F/s.cosα"
+    ],
+    "answer": "A = F.s.cosα",
+    "explanation": "Công = lực × quãng đường × cos góc hợp bởi lực và hướng dịch chuyển."
+  },
+  {
+    "id": 57,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Năng lượng – Công – Công suất",
+    "difficulty": "Trung bình",
+    "question": "Công suất được tính bằng công thức nào?",
+    "options": ["P = A.t", "P = A/t", "P = t/A", "P = A + t"],
+    "answer": "P = A/t",
+    "explanation": "Công suất = công / thời gian."
+  },
+  {
+    "id": 58,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Động năng – Thế năng",
+    "difficulty": "Trung bình",
+    "question": "Công thức tính động năng là:",
+    "options": ["Wd = mv²", "Wd = (1/2)mv²", "Wd = (1/2)mv", "Wd = mv"],
+    "answer": "Wd = (1/2)mv²",
+    "explanation": "Động năng = 1/2 × khối lượng × bình phương vận tốc."
+  },
+  {
+    "id": 59,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Động năng – Thế năng",
+    "difficulty": "Trung bình",
+    "question": "Định lý động năng phát biểu:",
+    "options": [
+      "A = Wd2 + Wd1",
+      "A = Wd2 - Wd1",
+      "A = Wd1 - Wd2",
+      "A = Wd1.Wd2"
+    ],
+    "answer": "A = Wd2 - Wd1",
+    "explanation": "Công của lực = độ biến thiên động năng."
+  },
+  {
+    "id": 60,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Động năng – Thế năng",
+    "difficulty": "Cơ bản",
+    "question": "Thế năng trọng trường được tính bằng:",
+    "options": ["Wt = m.h", "Wt = m.g.h", "Wt = g.h", "Wt = m.g/h"],
+    "answer": "Wt = m.g.h",
+    "explanation": "Thế năng = khối lượng × gia tốc trọng trường × độ cao."
+  },
+  {
+    "id": 61,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Cơ năng. Hiệu suất",
+    "difficulty": "Trung bình",
+    "question": "Cơ năng của vật được tính bằng:",
+    "options": [
+      "W = Wd + Wt",
+      "W = Wd - Wt",
+      "W = Wd.Wt",
+      "W = Wd/Wt"
+    ],
+    "answer": "W = Wd + Wt",
+    "explanation": "Cơ năng = động năng + thế năng."
+  },
+  {
+    "id": 62,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Cơ năng. Hiệu suất",
+    "difficulty": "Trung bình",
+    "question": "Hiệu suất được tính bằng công thức nào?",
+    "options": [
+      "H = (Wci/Wtp) × 100%",
+      "H = (Wtp/Wci) × 100%",
+      "H = Wci - Wtp",
+      "H = Wci + Wtp"
+    ],
+    "answer": "H = (Wci/Wtp) × 100%",
+    "explanation": "Hiệu suất = (năng lượng có ích / năng lượng toàn phần) × 100%"
+  },
+  {
+    "id": 63,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Động lượng",
+    "difficulty": "Cơ bản",
+    "question": "Động lượng được tính bằng công thức nào?",
+    "options": ["p = m/v", "p = m.v", "p = v/m", "p = m + v"],
+    "answer": "p = m.v",
+    "explanation": "Động lượng = khối lượng × vận tốc."
+  },
+  {
+    "id": 64,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Động lượng",
+    "difficulty": "Trung bình",
+    "question": "Xung lượng của lực liên hệ với động lượng qua công thức:",
+    "options": ["F.Δt = Δp", "F/Δt = Δp", "F.Δt = p", "F/Δt = p"],
+    "answer": "F.Δt = Δp",
+    "explanation": "Xung lượng của lực = độ biến thiên động lượng."
+  },
+  {
+    "id": 65,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Động lượng",
+    "difficulty": "Trung bình",
+    "question": "Va chạm mềm tuân theo công thức nào?",
+    "options": [
+      "m1v1 + m2v2 = (m1+m2)v",
+      "m1v1 - m2v2 = (m1+m2)v",
+      "m1v1 + m2v2 = m1v",
+      "m1v1 + m2v2 = m2v"
+    ],
+    "answer": "m1v1 + m2v2 = (m1+m2)v",
+    "explanation": "Sau va chạm mềm, hai vật dính vào nhau và chuyển động cùng vận tốc."
+  },
+  {
+    "id": 66,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Động lượng",
+    "difficulty": "Trung bình",
+    "question": "Chuyển động bằng phản lực tuân theo:",
+    "options": [
+      "m.v + M.V = 0",
+      "m.v = M.V",
+      "m.v - M.V = 0",
+      "m/V = M/v"
+    ],
+    "answer": "m.v + M.V = 0",
+    "explanation": "Ban đầu hệ đứng yên, tổng động lượng bằng 0."
+  },
+  {
+    "id": 67,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Chuyển động tròn đều",
+    "difficulty": "Trung bình",
+    "question": "Độ dịch chuyển góc được tính bằng:",
+    "options": ["θ = s.r", "θ = s/r", "θ = r/s", "θ = s + r"],
+    "answer": "θ = s/r",
+    "explanation": "Góc = cung / bán kính."
+  },
+  {
+    "id": 68,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Chuyển động tròn đều",
+    "difficulty": "Trung bình",
+    "question": "Tốc độ góc được tính bằng:",
+    "options": ["ω = θ.t", "ω = θ/t", "ω = t/θ", "ω = θ + t"],
+    "answer": "ω = θ/t",
+    "explanation": "Tốc độ góc = góc quay / thời gian."
+  },
+  {
+    "id": 69,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Chuyển động tròn đều",
+    "difficulty": "Trung bình",
+    "question": "Mối liên hệ giữa tốc độ dài và tốc độ góc là:",
+    "options": ["v = ω/r", "v = ω.r", "v = r/ω", "v = ω + r"],
+    "answer": "v = ω.r",
+    "explanation": "Tốc độ dài = tốc độ góc × bán kính."
+  },
+  {
+    "id": 70,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Chuyển động tròn đều",
+    "difficulty": "Cơ bản",
+    "question": "Chu kỳ trong chuyển động tròn đều được tính bằng:",
+    "options": ["T = 2π.ω", "T = 2π/ω", "T = ω/2π", "T = 2π + ω"],
+    "answer": "T = 2π/ω",
+    "explanation": "Chu kỳ = 2π / tốc độ góc."
+  },
+  {
+    "id": 71,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Chuyển động tròn đều",
+    "difficulty": "Cơ bản",
+    "question": "Tần số liên hệ với chu kỳ qua công thức:",
+    "options": ["f = T", "f = 1/T", "f = T²", "f = √T"],
+    "answer": "f = 1/T",
+    "explanation": "Tần số = 1 / chu kỳ."
+  },
+  {
+    "id": 72,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Lực hướng tâm",
+    "difficulty": "Trung bình",
+    "question": "Gia tốc hướng tâm được tính bằng công thức nào?",
+    "options": [
+      "a_ht = v²/r",
+      "a_ht = v.r²",
+      "a_ht = r/v²",
+      "a_ht = v.r"
+    ],
+    "answer": "a_ht = v²/r",
+    "explanation": "Gia tốc hướng tâm = bình phương tốc độ dài / bán kính."
+  },
+  {
+    "id": 73,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Lực hướng tâm",
+    "difficulty": "Trung bình",
+    "question": "Lực hướng tâm được tính bằng:",
+    "options": [
+      "F_ht = m.v²/r",
+      "F_ht = m.v/r",
+      "F_ht = v²/(m.r)",
+      "F_ht = m.r/v"
+    ],
+    "answer": "F_ht = m.v²/r",
+    "explanation": "Lực hướng tâm = khối lượng × gia tốc hướng tâm."
+  },
+  {
+    "id": 74,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Lực đàn hồi",
+    "difficulty": "Cơ bản",
+    "question": "Định luật Hooke được biểu diễn bằng công thức nào?",
+    "options": [
+      "F_dh = k.Δl",
+      "F_dh = k/Δl",
+      "F_dh = Δl/k",
+      "F_dh = k + Δl"
+    ],
+    "answer": "F_dh = k.Δl",
+    "explanation": "Lực đàn hồi = độ cứng × độ biến dạng."
+  },
+  {
+    "id": 75,
+    "subject": "Vật lí",
+    "grade": "10",
+    "topic": "Lực đàn hồi",
+    "difficulty": "Cơ bản",
+    "question": "Độ biến dạng của lò xo được tính bằng:",
+    "options": [
+      "Δl = l + l0",
+      "Δl = |l - l0|",
+      "Δl = l.l0",
+      "Δl = l/l0"
+    ],
+    "answer": "Δl = |l - l0|",
+    "explanation": "Độ biến dạng = |chiều dài khi biến dạng - chiều dài tự nhiên|."
+  },
+  {
+    
+  }
+
+]

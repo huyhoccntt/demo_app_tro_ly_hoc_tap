@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Đăng Ký Tài Khoản · Trợ Lý Học Đường</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #cfe9ff 0%, #a0d0ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Hiệu ứng mây bay */
+        body::before {
+            content: '☁️';
+            position: absolute;
+            font-size: 100px;
+            top: 10%;
+            left: 5%;
+            opacity: 0.15;
+            animation: floatCloud 20s infinite ease-in-out;
+        }
+
+        body::after {
+            content: '☁️';
+            position: absolute;
+            font-size: 80px;
+            bottom: 10%;
+            right: 5%;
+            opacity: 0.15;
+            animation: floatCloud 25s infinite reverse;
+        }
+
+        @keyframes floatCloud {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(20px) translateY(-10px); }
+        }
+
+        .signup-container {
+            width: 100%;
+            max-width: 520px;
+            z-index: 10;
+            position: relative;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .signup-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(2px);
+            border-radius: 56px;
+            box-shadow: 0 30px 50px -20px rgba(0, 80, 150, 0.4), 0 0 0 1px rgba(255,255,255,0.6);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .signup-header {
+            text-align: center;
+            padding: 36px 36px 0 36px;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, #2b95ff, #0077dd);
+            width: 80px;
+            height: 80px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 25px -8px rgba(0, 100, 200, 0.35);
+        }
+
+        .logo-icon i {
+            font-size: 42px;
+            color: white;
+        }
+
+        .signup-header h1 {
+            font-size: 2.1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0369a1, #0284c7, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .signup-header p {
+            color: #3b7ca5;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #7abde0, #0284c7, #7abde0);
+            margin: 16px auto 0;
+            border-radius: 3px;
+        }
+
+        /* Form */
+        .form-container {
+            padding: 32px 40px 44px 40px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #0b4a6f;
+            font-size: 0.85rem;
+            margin-left: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6eb0db;
+            font-size: 1.2rem;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 16px 20px 16px 52px;
+            border: 1.5px solid #e0efff;
+            border-radius: 44px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            transition: all 0.25s;
+            font-weight: 500;
+            color: #05445e;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: #2b95ff;
+            box-shadow: 0 6px 18px rgba(0, 120, 215, 0.12);
+        }
+
+        .input-wrapper select {
+            width: 100%;
+            padding: 16px 20px 16px 52px;
+            border: 1.5px solid #e0efff;
+            border-radius: 44px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            transition: all 0.25s;
+            font-weight: 500;
+            color: #05445e;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236eb0db' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            background-size: 16px;
+        }
+
+        .input-wrapper select:focus {
+            outline: none;
+            border-color: #2b95ff;
+            box-shadow: 0 6px 18px rgba(0, 120, 215, 0.12);
+        }
+
+        .input-wrapper input.error {
+            border-color: #ff8a7a;
+            background: #fff8f6;
+        }
+
+        /* Checkbox */
+        .terms-group {
+            margin: 24px 0 28px 0;
+        }
+
+        .checkbox-custom {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: #2b6c9e;
+            font-weight: 500;
+        }
+
+        .checkbox-custom input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #0284c7;
+        }
+
+        .terms-link {
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 1px dashed #7abde0;
+        }
+
+        /* Button */
+        .btn-register {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(105deg, #0f6fbf, #0099ff);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 12px 24px -10px rgba(0, 110, 200, 0.45);
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(105deg, #0e5fa8, #0088ee);
+            box-shadow: 0 18px 30px -12px rgba(0, 110, 210, 0.55);
+        }
+
+        .btn-register:active {
+            transform: translateY(1px);
+        }
+
+        /* Social section */
+        .social-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .social-section p {
+            color: #5486a6;
+            font-size: 0.8rem;
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .social-section p::before,
+        .social-section p::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 28%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #97c8f0, transparent);
+        }
+
+        .social-section p::before {
+            left: 0;
+        }
+
+        .social-section p::after {
+            right: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #eef6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s;
+            color: #2c7fc9;
+            font-size: 1.3rem;
+            text-decoration: none;
+            border: 1px solid #cde5ff;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-4px);
+            background: white;
+            color: #0077dd;
+            box-shadow: 0 8px 18px rgba(0,110,200,0.15);
+        }
+
+        /* Message box */
+        .message-box {
+            padding: 14px 20px;
+            border-radius: 60px;
+            margin-top: 22px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: none;
+            animation: popMsg 0.3s ease;
+        }
+
+        @keyframes popMsg {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .message-box.success {
+            display: block;
+            background: #d4f0ff;
+            color: #0466a8;
+            border-left: 5px solid #1e88e5;
+        }
+
+        .message-box.error {
+            display: block;
+            background: #ffeae6;
+            color: #c7452e;
+            border-left: 5px solid #ff7e6b;
+        }
+
+        /* Footer */
+        .login-footer {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 16px;
+            border-top: 1px solid #e0efff;
+        }
+
+        .login-footer span {
+            color: #5486a6;
+            font-size: 0.85rem;
+        }
+
+        .login-footer a {
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: 700;
+            background: #e8f3ff;
+            padding: 6px 16px;
+            border-radius: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .login-footer a:hover {
+            background: #d0e8ff;
+        }
+
+        /* Loading effect */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @media (max-width: 560px) {
+            .form-container {
+                padding: 24px 24px 36px 24px;
+            }
+            .signup-header {
+                padding: 28px 24px 0;
+            }
+            .logo-icon {
+                width: 65px;
+                height: 65px;
+            }
+            .logo-icon i {
+                font-size: 34px;
+            }
+            .signup-header h1 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-card">
+            <div class="signup-header">
+                <div class="logo-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h1>Tạo tài khoản mới</h1>
+                <p>Điền thông tin bên dưới để bắt đầu</p>
+                <div class="divider"></div>
+            </div>
+
+            <div class="form-container">
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label><i class="fas fa-user" style="margin-right: 6px;"></i> Họ và tên</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user-circle"></i>
+                            <input type="text" id="fullName" placeholder="Ví dụ: Nguyễn Thị Thanh Tâm" autocomplete="name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <input type="email" id="email" placeholder="thanhtam@example.com" autocomplete="email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> Mật khẩu</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-key"></i>
+                            <input type="password" id="password" placeholder="Ít nhất 6 ký tự" autocomplete="new-password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-check-circle"></i> Xác nhận mật khẩu</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-shield-alt"></i>
+                            <input type="password" id="confirmPassword" placeholder="Nhập lại mật khẩu" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="terms-group">
+                        <label class="checkbox-custom">
+                            <input type="checkbox" id="agreeTerms">
+                            <span>Tôi đồng ý với <a href="#" id="termsLink" class="terms-link">Điều khoản sử dụng</a> và <a href="#" class="terms-link">Chính sách bảo mật</a></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-register" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Đăng ký ngay
+                    </button>
+
+                    <div id="messageBox" class="message-box"></div>
+
+                    <div class="social-section">
+                        <p>Hoặc đăng ký nhanh với</p>
+                        <div class="social-icons">
+                            <div class="social-icon" onclick="socialSignup('google')"><i class="fab fa-google"></i></div>
+                            <div class="social-icon" onclick="socialSignup('facebook')"><i class="fab fa-facebook-f"></i></div>
+                            <div class="social-icon" onclick="socialSignup('github')"><i class="fab fa-github"></i></div>
+                        </div>
+                    </div>
+
+                    <div class="login-footer">
+                        <span>✨ Đã có tài khoản?</span>
+                        <a id="goToLoginBtn">Đăng nhập ngay →</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal điều khoản đơn giản -->
+    <div id="termsModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,50,80,0.6); backdrop-filter:blur(6px); z-index:2000; align-items:center; justify-content:center;">
+        <div style="background:white; max-width:350px; border-radius:48px; padding:32px 28px; text-align:center;">
+            <i class="fas fa-file-alt" style="font-size:48px; color:#0284c7;"></i>
+            <h3 style="margin:16px 0 10px; color:#0369a1;">Điều khoản dịch vụ</h3>
+            <p style="color:#4a6f8a; font-size:0.85rem; line-height:1.5;">Chào mừng bạn đến với nền tảng học tập thông minh. Việc đăng ký đồng nghĩa với việc bạn tuân thủ các quy định về học tập tích cực và bảo mật thông tin cá nhân.</p>
+            <button onclick="closeTermsModal()" style="margin-top:24px; background:#0284c7; border:none; padding:12px 28px; border-radius:40px; color:white; font-weight:bold; cursor:pointer;">Đã hiểu và đồng ý</button>
+        </div>
+    </div>
+
+    <script>
+        // Hiển thị thông báo
+        function showMessage(message, type) {
+            const msgBox = document.getElementById('messageBox');
+            const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-triangle';
+            msgBox.innerHTML = `<i class="fas ${icon}" style="margin-right: 8px;"></i> ${message}`;
+            msgBox.className = `message-box ${type}`;
+            msgBox.style.display = 'block';
+            
+            setTimeout(() => {
+                msgBox.style.display = 'none';
+            }, 4000);
+        }
+
+        // Xử lý đăng ký với API backend
+        async function handleSignup(event) {
+            event.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const userRole = 'student';
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+
+            // Validate
+            if (!fullName) {
+                showMessage('Vui lòng nhập họ và tên', 'error');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Email không đúng định dạng (vd: ten@email.com)', 'error');
+                return;
+            }
+
+            if (password.length < 6) {
+                showMessage('Mật khẩu phải có ít nhất 6 ký tự', 'error');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showMessage('Mật khẩu xác nhận không khớp', 'error');
+                return;
+            }
+
+            if (!agreeTerms) {
+                showMessage('Bạn cần đồng ý với Điều khoản sử dụng', 'error');
+                return;
+            }
+
+            // Vô hiệu hóa nút trong lúc xử lý
+            const btn = document.getElementById('submitBtn');
+            btn.classList.add('loading');
+            btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Đang tạo tài khoản...';
+
+            try {
+                // Gửi dữ liệu đến backend API
+                const response = await fetch('http://localhost:5000/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: fullName,
+                        email: email,
+                        password: password,
+                        role: userRole
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Thành công
+                    showMessage('🎉 Đăng ký thành công! Đang chuyển đến trang đăng nhập...', 'success');
+                    
+                    // Chuyển hướng sau 1.5 giây
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 1500);
+                } else {
+                    // Lỗi từ server
+                    showMessage(data.message || 'Có lỗi xảy ra khi đăng ký', 'error');
+                    btn.classList.remove('loading');
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Đăng ký ngay';
+                }
+            } catch (error) {
+                console.error('Signup error:', error);
+                showMessage('❌ Không thể kết nối đến server. Vui lòng thử lại sau.', 'error');
+                btn.classList.remove('loading');
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Đăng ký ngay';
+            }
+        }
+
+        // Social signup với API backend
+        async function socialSignup(provider) {
+            showMessage(`🔷 Đang kết nối với ${provider.toUpperCase()}...`, 'info');
+            
+            try {
+                // Tạo email và tên giả cho demo
+                const fakeEmail = `${provider}_${Date.now()}@social.com`;
+                const fakeName = `${provider.charAt(0).toUpperCase() + provider.slice(1)} User`;
+                
+                const response = await fetch('http://localhost:5000/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: fakeName,
+                        email: fakeEmail,
+                        password: 'social_login_demo_' + Date.now(),
+                        role: 'student' // Mặc định là học sinh
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    showMessage(`✨ Đăng ký thành công với ${provider}! Chuyển đến đăng nhập...`, 'success');
+                    
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 1500);
+                } else {
+                    showMessage(data.message || `Lỗi đăng ký với ${provider}`, 'error');
+                }
+            } catch (error) {
+                console.error('Social signup error:', error);
+                showMessage('❌ Không thể kết nối đến server. Vui lòng thử lại sau.', 'error');
+            }
+        }
+
+        // Modal điều khoản
+        const termsModal = document.getElementById('termsModal');
+        document.getElementById('termsLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            termsModal.style.display = 'flex';
+        });
+        
+        window.closeTermsModal = function() {
+            termsModal.style.display = 'none';
+        };
+        
+        window.onclick = function(e) {
+            if (e.target === termsModal) {
+                termsModal.style.display = 'none';
+            }
+        };
+
+        // Chuyển sang trang đăng nhập
+        document.getElementById('goToLoginBtn').addEventListener('click', () => {
+            window.location.href = 'login.html';
+        });
+
+        // Gán sự kiện submit form
+        document.getElementById('signupForm').addEventListener('submit', handleSignup);
+    </script>
+</body>
+</html>

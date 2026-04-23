@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1776477736438,
+    "name": "Test User",
+    "email": "test@example.com",
+    "password": "123456",
+    "role": "student",
+    "createdAt": "2026-04-18T02:02:16.438Z",
+    "avatar": "https://ui-avatars.com/api/?background=0284c7&color=fff&name=Test%20User",
+    "status": "active"
+  },
+  {
+    "id": 1776477752261,
+    "name": "Nguyen Van Teacher",
+    "email": "teacher@example.com",
+    "password": "password123",
+    "role": "teacher",
+    "createdAt": "2026-04-18T02:02:32.261Z",
+    "avatar": "https://ui-avatars.com/api/?background=0284c7&color=fff&name=Nguyen%20Van%20Teacher",
+    "status": "active"
+  },
+  {
+    "id": 1776477932856,
+    "name": "Test Admin",
+    "email": "admin@test.com",
+    "password": "123456",
+    "role": "admin",
+    "createdAt": "2026-04-18T02:05:32.856Z",
+    "avatar": "https://ui-avatars.com/api/?background=0284c7&color=fff&name=Test%20Admin",
+    "status": "active"
+  },
+  {
+    "id": 1776477942550,
+    "name": "Test Admin",
+    "email": "admin2@test.com",
+    "password": "123456",
+    "role": "admin",
+    "createdAt": "2026-04-18T02:05:42.550Z",
+    "avatar": "https://ui-avatars.com/api/?background=0284c7&color=fff&name=Test%20Admin",
+    "status": "active"
+  },
+  {
+    "id": 1776477958613,
+    "name": "New Student",
+    "email": "student@test.com",
+    "password": "123456",
+    "role": "student",
+    "createdAt": "2026-04-18T02:05:58.613Z",
+    "avatar": "https://ui-avatars.com/api/?background=0284c7&color=fff&name=New%20Student",
+    "status": "active"
+  },
+  {  "id": 177647796234,
+    "name": "New Teacher",
+    "email": "teacher@test.com",
+    "password": "123456",
+    "role": "teacher",
+    "createdAt": "2026-04-18T02:06:01.234Z",
+    "avatar": "https://ui-avatars.com/api/?background=0284c7&color=fff&name=New%20Teacher",
+    "status": "active"
+  }
+] 
