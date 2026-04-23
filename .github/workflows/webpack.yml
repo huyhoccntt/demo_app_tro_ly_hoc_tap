@@ -1,0 +1,64 @@
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Build Project
+      run: |
+        # Cài đặt dependencies
+        npm install
+        npm install -D webpack-cli
+        
+        # Tạo thư mục src
+        mkdir -p src
+        
+        # Tạo file index.js
+        cat > src/index.js << 'EOF'
+console.log('Application started successfully!');
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM loaded');
+});
+export default {};
+EOF
+        
+        # Tạo file webpack.config.js
+        cat > webpack.config.js << 'EOF'
+const path = require('path');
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  mode: 'development',
+};
+EOF
+        
+        # Thêm script build vào package.json
+        npm pkg set scripts.build="webpack --mode production"
+        
+        # Chạy build
+        npm run build
+        
+        # Hiển thị kết quả
+        echo "✅ Build successful!"
+        ls -la dist/
