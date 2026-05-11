@@ -1,38 +1,28 @@
-# Trợ lý AI
+﻿# StudyMate AI
 
-Bo khung fullstack cho app tro ly AI phuc vu viec hoc, duoc nang cap tu cac trang HTML san co sang:
+Ban hien co the chay phien ban HTML truc tiep trong XAMPP ma khong can backend rieng.
 
-- `frontend/`: React + Vite + React Router
-- `backend/`: Express API, auth, chat Gemini, PostgreSQL-ready
-- `server.js`: entrypoint backend
+## Tep chinh
 
-## Chay local
+- `index.html`: trang gioi thieu
+- `login.html`: dang nhap bang du lieu luu trong `localStorage`
+- `signup.html`: dang ky tai khoan moi ngay trong trinh duyet
+- `dashboard.html`: bang dieu khien, chat offline va thu vien tai lieu
+- `quiz-dataset.xlsx`: file nguon bo cau hoi
+- `quiz-dataset.sql`: seed SQL cho bang `quiz_questions`
+- `scripts/convert-quiz-xlsx-to-sql.js`: chuyen Excel sang SQL khi can cap nhat dataset
 
-1. Cai dependencies:
+## Cach chay
 
-```bash
-npm install
-npm --prefix frontend install
-```
+1. Mo XAMPP va bat Apache.
+2. Dat project trong `c:\xampp\htdocs`.
+3. Import `backend/schema.sql`, sau do import `quiz-dataset.sql` vao database PostgreSQL.
+4. Chay backend Node o cong 5000 de dashboard doc cau hoi tu `/api/questions`.
+5. Truy cap `http://localhost/` hoac mo truc tiep `http://localhost/dashboard.html`.
 
-2. Tao file `.env` dua tren `.env.example`.
+## Ghi chu
 
-3. Chay backend:
+- Dang nhap, dang ky va cau hoi giao vien duoc luu bang `localStorage` tren trinh duyet hien tai.
+- Chat AI trong `dashboard.html` dang chay o che do offline, khong goi backend.
+- Phan tao de thi trong `dashboard.html` doc cau hoi tu bang SQL `quiz_questions` thong qua backend.
 
-```bash
-npm run dev
-```
-
-4. Chay frontend:
-
-```bash
-npm run dev:frontend
-```
-
-Frontend mac dinh chay o `http://localhost:5173`, backend o `http://localhost:5000`.
-
-## PostgreSQL
-
-Them `DATABASE_URL` vao `.env`, sau do chay schema trong [backend/schema.sql](/C:/xampp/htdocs/backend/schema.sql:1).
-
-Neu chua cau hinh PostgreSQL, backend van dung `users.json` lam file fallback trong giai doan migration.

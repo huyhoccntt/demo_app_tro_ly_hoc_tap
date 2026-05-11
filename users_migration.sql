@@ -1,4 +1,3 @@
--- Generated from users.json on 2026-04-22
 BEGIN;
 
 CREATE TABLE IF NOT EXISTS users (
@@ -8,9 +7,33 @@ CREATE TABLE IF NOT EXISTS users (
   password_hash TEXT NOT NULL,
   role VARCHAR(20) NOT NULL,
   avatar TEXT,
+  school VARCHAR(180),
+  class_name VARCHAR(80),
+  teaching_grade VARCHAR(80),
+  rank VARCHAR(80),
+  teacher_status VARCHAR(20),
+  teacher_certificate_image TEXT,
+  teacher_verification_code VARCHAR(12),
+  teacher_verified_at TIMESTAMPTZ,
+  login_days INTEGER NOT NULL DEFAULT 0,
+  posts_count INTEGER NOT NULL DEFAULT 0,
   status VARCHAR(20) NOT NULL DEFAULT 'active',
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+ALTER TABLE users
+  ADD COLUMN IF NOT EXISTS school VARCHAR(180),
+  ADD COLUMN IF NOT EXISTS class_name VARCHAR(80),
+  ADD COLUMN IF NOT EXISTS teaching_grade VARCHAR(80),
+  ADD COLUMN IF NOT EXISTS rank VARCHAR(80),
+  ADD COLUMN IF NOT EXISTS teacher_status VARCHAR(20),
+  ADD COLUMN IF NOT EXISTS teacher_certificate_image TEXT,
+  ADD COLUMN IF NOT EXISTS teacher_verification_code VARCHAR(12),
+  ADD COLUMN IF NOT EXISTS teacher_verified_at TIMESTAMPTZ,
+  ADD COLUMN IF NOT EXISTS login_days INTEGER NOT NULL DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS posts_count INTEGER NOT NULL DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW();
 
 INSERT INTO users (id, name, email, password_hash, role, avatar, status, created_at)
 VALUES

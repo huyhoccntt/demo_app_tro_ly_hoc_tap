@@ -1,68 +1,228 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Liên hệ - Trợ Lý Học Đường</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="page">
-      <header class="header">
-        <div class="header-inner">
-          <div class="brand">
-            <div class="brand-mark">H</div>
-            <div>Trợ Lý Học Đường</div>
-          </div>
-          <nav class="nav">
-            <a href="index.html#features">Tính năng</a>
-            <a href="index.html#impact">Tác động</a>
-            <a href="index.html#ready">Bắt đầu học</a>
-          </nav>
-          <div class="header-actions">
-            <a href="login.html" class="link-button">Đăng nhập</a>
-            <a href="signup.html" class="btn btn-primary btn-sm">Học thử ngay</a>
-          </div>
-        </div>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liên hệ · Trợ Lý Học Đường</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0f1c2e; --navy-md: #1e3356;
+      --blue: #2563eb; --blue-lt: #3b82f6;
+      --white: #ffffff; --gray-50: #f7f9fc;
+      --gray-100: #eef2f8; --gray-200: #dde4f0;
+      --gray-400: #94a3b8; --gray-600: #475569; --gray-900: #0f172a;
+    }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--gray-50); color: var(--gray-900); min-height: 100vh; }
+    a { text-decoration: none; color: inherit; }
 
-      <section class="section bg-soft">
-        <div class="section-title">
-          <h2>Liên hệ với chúng tôi</h2>
-          <p>Gửi thông tin và câu hỏi, chúng tôi sẽ liên hệ lại với bạn sớm nhất.</p>
-        </div>
-        <div class="form-card">
-          <form onsubmit="submitContact(event)">
-            <h3 class="form-title">Form liên hệ</h3>
-            <div class="form-field">
-              <label for="contactName">Họ và tên</label>
-              <input id="contactName" type="text" placeholder="Nhập họ tên" required />
-            </div>
-            <div class="form-field">
-              <label for="contactEmail">Email</label>
-              <input id="contactEmail" type="email" placeholder="Nhập email liên hệ" required />
-            </div>
-            <div class="form-field">
-              <label for="contactMessage">Nội dung</label>
-              <textarea id="contactMessage" placeholder="Nhập câu hỏi hoặc yêu cầu của bạn" required></textarea>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Gửi liên hệ</button>
-              <p class="form-note">Chỉ là trang tĩnh, dữ liệu sẽ được lưu trong trình duyệt để demo.</p>
-            </div>
-            <div id="contactMessageBox" class="message-box"></div>
-          </form>
-        </div>
-      </section>
-      <footer class="footer">
-        <div class="footer-inner">
-          <div class="brand">
-            <div class="brand-mark">H</div> Trợ Lý Học Đường
+    /* Header */
+    .header { background: rgba(255,255,255,.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-100); position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; color: var(--navy); letter-spacing: -.02em; }
+    .brand-icon { width: 34px; height: 34px; background: linear-gradient(135deg, var(--blue-lt), var(--blue)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; box-shadow: 0 4px 12px rgba(37,99,235,.3); }
+    nav { display: flex; gap: 24px; }
+    nav a { font-size: .88rem; font-weight: 600; color: var(--gray-600); transition: color .2s; }
+    nav a:hover { color: var(--blue); }
+    .btn-nav { background: var(--navy); color: white; padding: 8px 18px; border-radius: 8px; font-size: .85rem; font-weight: 700; transition: .2s; }
+    .btn-nav:hover { background: var(--navy-md); }
+
+    /* Page */
+    .page-wrap { max-width: 960px; margin: 0 auto; padding: 56px 32px; }
+    .page-head { text-align: center; margin-bottom: 48px; }
+    .page-head h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -.03em; color: var(--navy); margin-bottom: 12px; }
+    .page-head p { color: var(--gray-600); font-size: 1rem; line-height: 1.7; }
+
+    /* Layout */
+    .contact-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: start; }
+
+    /* Form card */
+    .form-card { background: white; border: 1px solid var(--gray-100); border-radius: 20px; padding: 36px; box-shadow: 0 4px 20px rgba(15,23,42,.04); }
+    .form-card h2 { font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 24px; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: .82rem; font-weight: 700; color: var(--navy-md); margin-bottom: 8px; }
+    .field input, .field textarea, .field select {
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid var(--gray-200); border-radius: 10px;
+      font-size: .93rem; font-family: inherit;
+      color: var(--gray-900); background: var(--gray-50);
+      outline: none; transition: border-color .2s, box-shadow .2s;
+    }
+    .field input:focus, .field textarea:focus {
+      border-color: var(--blue); background: white;
+      box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+    }
+    .field textarea { min-height: 130px; resize: vertical; line-height: 1.6; }
+    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .btn-submit {
+      width: 100%; padding: 13px; border: none;
+      background: linear-gradient(135deg, var(--navy-md), var(--blue));
+      color: white; border-radius: 10px;
+      font-size: .95rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; transition: .2s;
+      box-shadow: 0 6px 20px rgba(37,99,235,.25);
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,99,235,.35); }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .msg-box { display: none; margin-top: 14px; padding: 12px 14px; border-radius: 10px; font-size: .88rem; font-weight: 500; }
+    .msg-box.success { display: block; background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+    .msg-box.error   { display: block; background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+    /* Info card */
+    .info-card { background: var(--navy); border-radius: 20px; padding: 36px; color: white; }
+    .info-card h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .info-card > p { font-size: .88rem; color: rgba(255,255,255,.55); line-height: 1.6; margin-bottom: 28px; }
+    .info-items { display: flex; flex-direction: column; gap: 20px; }
+    .info-item { display: flex; gap: 12px; align-items: flex-start; }
+    .info-icon { width: 36px; height: 36px; background: rgba(255,255,255,.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .info-item strong { display: block; font-size: .88rem; margin-bottom: 3px; }
+    .info-item span { font-size: .82rem; color: rgba(255,255,255,.5); line-height: 1.5; }
+    .info-divider { height: 1px; background: rgba(255,255,255,.1); margin: 24px 0; }
+    .social-links { display: flex; gap: 10px; }
+    .social-btn { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 8px 14px; font-size: .8rem; font-weight: 600; color: rgba(255,255,255,.7); transition: .2s; }
+    .social-btn:hover { background: rgba(255,255,255,.15); color: white; }
+
+    /* Footer */
+    .footer { border-top: 1px solid var(--gray-100); padding: 28px 32px; background: white; margin-top: 60px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-right { font-size: .82rem; color: var(--gray-400); }
+
+    @media (max-width: 760px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .row-2 { grid-template-columns: 1fr; }
+      nav { display: none; }
+      .page-wrap { padding: 36px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="brand"><div class="brand-icon">H</div>Trợ Lý Học Đường</a>
+    <nav>
+      <a href="index.html#features">Tính năng</a>
+      <a href="index.html#impact">Tác động</a>
+    </nav>
+    <a href="login.html" class="btn-nav">Đăng nhập</a>
+  </div>
+</header>
+
+<div class="page-wrap">
+  <div class="page-head">
+    <h1>Liên hệ với chúng tôi 👋</h1>
+    <p>Có câu hỏi hay ý kiến đóng góp? Chúng tôi luôn lắng nghe và phản hồi sớm nhất.</p>
+  </div>
+
+  <div class="contact-layout">
+    <div class="form-card">
+      <h2>Gửi tin nhắn</h2>
+
+      <div id="contactMsg" class="msg-box"></div>
+
+      <form id="contactForm">
+        <div class="row-2">
+          <div class="field">
+            <label>Họ và tên *</label>
+            <input type="text" id="cName" placeholder="Nguyễn Văn A" required />
           </div>
-          <p class="footer-text">© 2024 Nền tảng Học tập AI Cá nhân hóa. All rights reserved.</p>
+          <div class="field">
+            <label>Email *</label>
+            <input type="email" id="cEmail" placeholder="email@example.com" required />
+          </div>
         </div>
-      </footer>
+        <div class="field">
+          <label>Chủ đề</label>
+          <input type="text" id="cSubject" placeholder="Tiêu đề tin nhắn" />
+        </div>
+        <div class="field">
+          <label>Nội dung *</label>
+          <textarea id="cMessage" placeholder="Nhập câu hỏi hoặc yêu cầu của bạn..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">Gửi tin nhắn →</button>
+      </form>
     </div>
-    <script src="scripts.js" defer></script>
-  </body>
+
+    <div class="info-card">
+      <h2>Thông tin liên hệ</h2>
+      <p>Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.</p>
+
+      <div class="info-items">
+        <div class="info-item">
+          <div class="info-icon">📧</div>
+          <div>
+            <strong>Email</strong>
+            <span>support@trolyhocduong.vn</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <strong>Địa chỉ</strong>
+            <span>TP. Hồ Chí Minh, Việt Nam</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">⏰</div>
+          <div>
+            <strong>Giờ hỗ trợ</strong>
+            <span>Thứ 2 – Thứ 6: 8:00 – 17:00<br />Trợ lý AI: 24/7</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-divider"></div>
+
+      <div style="font-size:.82rem; color:rgba(255,255,255,.5); margin-bottom:12px; font-weight:600;">Theo dõi chúng tôi</div>
+      <div class="social-links">
+        <a class="social-btn" href="#">Facebook</a>
+        <a class="social-btn" href="#">Zalo</a>
+        <a class="social-btn" href="#">YouTube</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <a href="index.html" class="brand"><div class="brand-icon">H</div>Trợ Lý Học Đường</a>
+    <div class="footer-right">© 2024 Nền tảng Học tập AI Cá nhân hóa.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name    = document.getElementById('cName').value.trim();
+    const email   = document.getElementById('cEmail').value.trim();
+    const message = document.getElementById('cMessage').value.trim();
+    const msgBox  = document.getElementById('contactMsg');
+    const btn     = document.getElementById('submitBtn');
+
+    if (!name || !email || !message) {
+      msgBox.className = 'msg-box error';
+      msgBox.textContent = '❌ Vui lòng điền đầy đủ thông tin bắt buộc.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Đang gửi...';
+
+    // Save to localStorage as demo
+    const contacts = JSON.parse(localStorage.getItem('studymate_contacts') || '[]');
+    contacts.push({ name, email, subject: document.getElementById('cSubject').value, message, sent_at: new Date().toISOString() });
+    localStorage.setItem('studymate_contacts', JSON.stringify(contacts));
+
+    setTimeout(() => {
+      msgBox.className = 'msg-box success';
+      msgBox.textContent = '✅ Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi sớm nhất.';
+      document.getElementById('contactForm').reset();
+      btn.disabled = false;
+      btn.textContent = 'Gửi tin nhắn →';
+    }, 800);
+  });
+</script>
+
+</body>
 </html>
