@@ -1894,7 +1894,7 @@
     // CẤU HÌNH API GEMINI (THÊM API KEY CHÍNH THỨC VÀO ĐÂY)
     // --------------------------------------------------------------
     // Cấu hình Gemini đang dùng cho trợ lý AI trên dashboard.
-    const GEMINI_API_KEY = "AIzaSyCM417vH6NrezkvKaxvViJfdn-qL70g7o8";
+    const GEMINI_API_KEY = "AIzaSyDIt9CmQX2NnWyAIy1DjXdxBmjIlfxIshQ";
     const GEMINI_MODEL = "gemini-2.5-flash";
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
     
@@ -1924,7 +1924,7 @@
             // Gửi một ping thăm dò (câu hỏi ngắn) để test key
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 5000);
-            const testResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${AIzaSyCM417vH6NrezkvKaxvViJfdn-qL70g7o8}`, {
+            const testResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`, {
                 signal: controller.signal
             });
             clearTimeout(timeoutId);
