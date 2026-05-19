@@ -33,10 +33,8 @@
       color: var(--gray-900);
     }
 
-    /* ── Layout ─────────────────────────────────── */
     .page { display: flex; width: 100%; min-height: 100vh; }
 
-    /* LEFT PANEL */
     .panel-left {
       flex: .85;
       background: var(--navy-900);
@@ -118,7 +116,6 @@
 
     .left-footer { font-size: .72rem; color: rgba(255,255,255,.25); padding-top: 20px; }
 
-    /* RIGHT PANEL */
     .panel-right {
       flex: 1.15;
       display: flex;
@@ -130,7 +127,6 @@
 
     .form-wrap { width: 100%; max-width: 480px; }
 
-    /* Mobile brand */
     .mobile-brand { display: none; margin-bottom: 28px; }
     .mobile-brand .brand { color: var(--gray-900); }
     .mobile-brand .brand-icon { box-shadow: none; }
@@ -139,7 +135,6 @@
     .form-heading h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -.03em; color: var(--navy-900); margin-bottom: 5px; }
     .form-heading p { font-size: .88rem; color: var(--gray-400); line-height: 1.6; }
 
-    /* Role tabs */
     .role-tabs { display: flex; gap: 8px; margin-bottom: 22px; }
     .role-tab {
       flex: 1;
@@ -161,7 +156,6 @@
       color: var(--blue);
     }
 
-    /* Fields */
     .field { margin-bottom: 15px; }
     .field label { display: block; font-size: .82rem; font-weight: 700; color: var(--navy-800); margin-bottom: 7px; }
     .input-wrap { position: relative; }
@@ -189,7 +183,6 @@
 
     .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-    /* Teacher panel */
     .teacher-panel {
       display: none;
       background: #eff6ff;
@@ -215,7 +208,6 @@
       cursor: pointer;
     }
 
-    /* Terms */
     .terms-row { margin: 14px 0 18px; }
     .chk-label {
       display: flex; align-items: flex-start; gap: 10px;
@@ -239,7 +231,6 @@
     }
     .terms-link { color: var(--blue); font-weight: 700; }
 
-    /* Submit */
     .btn-submit {
       width: 100%; padding: 14px;
       background: linear-gradient(135deg, var(--navy-700), var(--blue));
@@ -254,7 +245,6 @@
     }
     .btn-submit:disabled { opacity: .65; cursor: not-allowed; }
 
-    /* Messages */
     .msg-box {
       display: none;
       padding: 11px 14px; border-radius: 10px;
@@ -285,7 +275,6 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Terms modal */
     .modal-overlay {
       display: none; position: fixed; inset: 0;
       background: rgba(7,15,26,.65);
@@ -322,7 +311,6 @@
 <body>
 <div class="page">
 
-  <!-- ── LEFT PANEL ────────────────────────── -->
   <div class="panel-left">
     <div class="left-content">
       <a href="index.html" class="brand">
@@ -364,7 +352,6 @@
     </div>
   </div>
 
-  <!-- ── RIGHT PANEL ───────────────────────── -->
   <div class="panel-right">
     <div class="form-wrap">
 
@@ -380,7 +367,6 @@
         <p>Điền thông tin bên dưới để bắt đầu hành trình học tập.</p>
       </div>
 
-      <!-- Role selection -->
       <div class="role-tabs">
         <button type="button" class="role-tab active" id="tabStudent" onclick="selectRole('student')">🎓 Học sinh</button>
         <button type="button" class="role-tab" id="tabTeacher" onclick="selectRole('teacher')">📚 Giáo viên</button>
@@ -423,7 +409,6 @@
           </div>
         </div>
 
-        <!-- Teacher panel -->
         <div class="teacher-panel" id="teacherPanel">
           <strong>📋 Xác minh giáo viên</strong>
           Tải ảnh chứng chỉ sư phạm của bạn. Trong bản demo, tài khoản sẽ được tạo ngay.
@@ -454,13 +439,12 @@
   </div>
 </div>
 
-<!-- Terms modal -->
 <div class="modal-overlay" id="termsModal">
   <div class="modal-box">
     <div style="font-size:2.5rem">📄</div>
     <h3>Điều khoản dịch vụ</h3>
     <p>Chào mừng bạn đến với Trợ Lý Học Đường. Bằng việc đăng ký, bạn đồng ý sử dụng nền tảng cho mục đích học tập, tôn trọng quyền riêng tư của các thành viên khác và tuân thủ các quy tắc cộng đồng.</p>
-    <button class="modal-btn" onclick="closeTerms(); document.getElementById('agreeTerms').checked = true; updateChkBox();">Đã hiểu và đồng ý ✓</button>
+    <button class="modal-btn" onclick="closeTerms(); document.getElementById('agreeTerms').checked = true;">Đã hiểu và đồng ý ✓</button>
   </div>
 </div>
 
@@ -476,7 +460,6 @@
     localStorage.setItem(USERS_KEY, JSON.stringify(users));
   }
 
-  // ── Role tabs ──────────────────────────────────────
   function selectRole(role) {
     document.getElementById('selectedRole').value = role;
     document.getElementById('tabStudent').classList.toggle('active', role === 'student');
@@ -484,7 +467,6 @@
     document.getElementById('teacherPanel').classList.toggle('show', role === 'teacher');
   }
 
-  // ── Messages ───────────────────────────────────────
   function showMsg(text, type) {
     const el = document.getElementById('signupMsg');
     const icons = { success: '✅', error: '❌', info: 'ℹ️' };
@@ -500,45 +482,26 @@
   }
 
   async function authApiRequest(path, payload) {
-    // Ưu tiên gọi theo cùng origin hiện tại (giảm lỗi sai port/host)
-    const origin = window.location.origin;
-    const endpoints = [
-      `${origin}/api${path}`,
-      `/api${path}`,
-      `http://localhost:5000/api${path}`
-    ];
+    await new Promise(resolve => setTimeout(resolve, 500));
 
-    let lastError = null;
-
-    for (const endpoint of endpoints) {
-      try {
-        console.debug('[signup] Calling:', endpoint, { path, payload });
-
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const data = await response.json().catch(() => ({}));
-        console.debug('[signup] Response:', response.status, data);
-
-        if (!response.ok) {
-          throw new Error(data.error || data.message || `HTTP ${response.status}`);
-        }
-        return data;
-      } catch (error) {
-        // Failed to fetch thường là lỗi network/port server không mở
-        console.warn('[signup] Fetch failed for:', endpoint, error);
-        lastError = error;
-      }
+    const users = getUsers();
+    if (users.some(u => u.email.toLowerCase() === payload.email.toLowerCase())) {
+      throw new Error('Email này đã được đăng ký. Vui lòng dùng email khác.');
     }
 
-    throw lastError || new Error('Không thể kết nối backend.');
+    return {
+      user: {
+        id: Date.now(),
+        name: payload.name,
+        email: payload.email,
+        role: payload.role,
+        avatar: payload.avatar,
+        status: 'active',
+        created_at: new Date().toISOString()
+      }
+    };
   }
 
-
-  // ── Register logic ─────────────────────────────────
   document.getElementById('signupForm').addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -549,7 +512,6 @@
     const role    = document.getElementById('selectedRole').value;
     const agreed  = document.getElementById('agreeTerms').checked;
 
-    // Validation
     if (!name) { showMsg('Vui lòng nhập họ và tên.', 'error'); return; }
     if (!/^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/.test(email)) {
       showMsg('Email không đúng định dạng (vd: ten@email.com)', 'error'); return;
@@ -565,6 +527,7 @@
 
     try {
       const avatar = `https://ui-avatars.com/api/?background=1e3356&color=fff&name=${encodeURIComponent(name)}`;
+      
       const result = await authApiRequest('/auth/register', {
         name,
         email,
@@ -574,33 +537,34 @@
       });
 
       const users = getUsers();
-      if (!users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
-        users.push({ ...result.user, password: pass });
-        saveUsers(users);
-      }
+      users.push({ 
+        ...result.user, 
+        password: pass,
+        ...(role === 'teacher' ? { teacherVerified: true, certUploaded: true } : {})
+      });
+      saveUsers(users);
 
-      showMsg('Đăng ký thành công và đã lưu vào SQL! Đang chuyển đến trang đăng nhập...', 'success');
+      showMsg('✅ Đăng ký thành công! Đang chuyển đến trang đăng nhập...', 'success');
       setTimeout(() => { window.location.href = 'login.html'; }, 1400);
     } catch (error) {
-      showMsg(error.message || 'Không thể đăng ký vào SQL.', 'error');
+      showMsg(error.message || 'Đăng ký thất bại, vui lòng thử lại.', 'error');
       setLoading(false);
     }
   });
 
-  // ── Terms modal ────────────────────────────────────
   document.getElementById('termsLink').addEventListener('click', (e) => {
     e.preventDefault();
     document.getElementById('termsModal').classList.add('open');
   });
-  function closeTerms() {
+  
+  window.closeTerms = function() {
     document.getElementById('termsModal').classList.remove('open');
   }
-  function updateChkBox() {}  // checkbox updates via CSS :checked
+  
   document.getElementById('termsModal').addEventListener('click', (e) => {
-    if (e.target === document.getElementById('termsModal')) closeTerms();
+    if (e.target === document.getElementById('termsModal')) window.closeTerms();
   });
 
-  // ── Seed demo users if needed ──────────────────────
   (function() {
     let users = getUsers();
     const demos = [
@@ -608,8 +572,14 @@
       { id: 1002, name: 'Giáo Viên Demo', email: 'teacher@demo.com', password: 'demo123', role: 'teacher', avatar: 'https://ui-avatars.com/api/?background=1e3356&color=fff&name=Giao+Vien', status: 'active', created_at: new Date().toISOString() },
       { id: 1003, name: 'Admin Demo', email: 'admin@demo.com', password: 'demo123', role: 'admin', avatar: 'https://ui-avatars.com/api/?background=1e3356&color=fff&name=Admin', status: 'active', created_at: new Date().toISOString() },
     ];
-    demos.forEach(d => { if (!users.find(u => u.email === d.email)) users.push(d); });
-    saveUsers(users);
+    let changed = false;
+    demos.forEach(d => { 
+      if (!users.find(u => u.email === d.email)) {
+        users.push(d);
+        changed = true;
+      }
+    });
+    if (changed) saveUsers(users);
   })();
 </script>
 </body>
