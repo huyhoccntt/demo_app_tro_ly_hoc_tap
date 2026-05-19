@@ -499,6 +499,45 @@
     btn.innerHTML = on ? 'Đang xử lý <span class="spinner"></span>' : 'Đăng ký ngay ✦';
   }
 
+  async function authApiRequest(path, payload) {
+    // Ưu tiên gọi theo cùng origin hiện tại (giảm lỗi sai port/host)
+    const origin = window.location.origin;
+    const endpoints = [
+      `${origin}/api${path}`,
+      `/api${path}`,
+      `http://localhost:5000/api${path}`
+    ];
+
+    let lastError = null;
+
+    for (const endpoint of endpoints) {
+      try {
+        console.debug('[signup] Calling:', endpoint, { path, payload });
+
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json().catch(() => ({}));
+        console.debug('[signup] Response:', response.status, data);
+
+        if (!response.ok) {
+          throw new Error(data.error || data.message || `HTTP ${response.status}`);
+        }
+        return data;
+      } catch (error) {
+        // Failed to fetch thường là lỗi network/port server không mở
+        console.warn('[signup] Fetch failed for:', endpoint, error);
+        lastError = error;
+      }
+    }
+
+    throw lastError || new Error('Không thể kết nối backend.');
+  }
+
+
   // ── Register logic ─────────────────────────────────
   document.getElementById('signupForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -522,30 +561,30 @@
       showMsg('Giáo viên cần tải ảnh chứng chỉ sư phạm.', 'error'); return;
     }
 
-    const users = getUsers();
-    if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
-      showMsg('Email này đã được đăng ký. Hãy dùng email khác hoặc đăng nhập.', 'error'); return;
-    }
-
     setLoading(true);
-    await new Promise(r => setTimeout(r, 700));
 
-    const newUser = {
-      id: Date.now(),
-      name,
-      email,
-      password: pass,
-      role,
-      avatar: `https://ui-avatars.com/api/?background=1e3356&color=fff&name=${encodeURIComponent(name)}`,
-      status: 'active',
-      created_at: new Date().toISOString()
-    };
+    try {
+      const avatar = `https://ui-avatars.com/api/?background=1e3356&color=fff&name=${encodeURIComponent(name)}`;
+      const result = await authApiRequest('/auth/register', {
+        name,
+        email,
+        password: pass,
+        role,
+        avatar
+      });
 
-    users.push(newUser);
-    saveUsers(users);
+      const users = getUsers();
+      if (!users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+        users.push({ ...result.user, password: pass });
+        saveUsers(users);
+      }
 
-    showMsg('Đăng ký thành công! Đang chuyển đến trang đăng nhập...', 'success');
-    setTimeout(() => { window.location.href = 'login.html'; }, 1400);
+      showMsg('Đăng ký thành công và đã lưu vào SQL! Đang chuyển đến trang đăng nhập...', 'success');
+      setTimeout(() => { window.location.href = 'login.html'; }, 1400);
+    } catch (error) {
+      showMsg(error.message || 'Không thể đăng ký vào SQL.', 'error');
+      setLoading(false);
+    }
   });
 
   // ── Terms modal ────────────────────────────────────
