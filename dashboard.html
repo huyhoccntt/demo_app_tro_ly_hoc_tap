@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Trợ Lý Học Đường · Dashboard · Hồ sơ · AI · Thư viện</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
     <style>
       * {
         margin: 0;
@@ -13,7 +12,7 @@
       }
 
       body {
-        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        font-family: "Times New Roman", Times, serif;
         background: #f5f9ff;
         color: #0a2540;
         line-height: 1.4;
@@ -214,7 +213,7 @@
       }
 
       .exam-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
         color: white;
         padding: 24px;
         border-radius: 16px;
@@ -395,7 +394,7 @@
 
       .review-question.incorrect {
         background: #fef2f2;
-        border-left-color: #ef4444;
+        border-left-color: #64748b;
       }
 
       .question-header {
@@ -538,6 +537,7 @@
         border-radius: 20px;
         padding: 16px;
         border: 1px solid #e2edf7;
+        min-width: 0;
       }
       .stat-label {
         font-size: 0.7rem;
@@ -815,6 +815,33 @@
         display: grid;
         place-items: center;
         box-shadow: 0 14px 30px rgba(37, 99, 235, 0.18);
+        overflow: hidden;
+        flex-shrink: 0;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .avatar-circle:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 18px 34px rgba(37, 99, 235, 0.24);
+      }
+      .avatar-circle.has-image {
+        background: #eff6ff;
+      }
+      .avatar-circle img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .avatar-tools {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+      .avatar-tools .btn {
+        padding: 7px 14px;
+        font-size: 0.75rem;
       }
       .profile-label {
         font-size: 0.75rem;
@@ -1262,12 +1289,67 @@
       .cal-day {
         background: #f9fcff;
         border-radius: 16px;
-        padding: 8px 4px;
-        text-align: center;
+        padding: 8px;
+        text-align: left;
         font-size: 0.8rem;
         border: 1px solid #e9f0f5;
+        min-height: 86px;
       }
       .cal-day.today { background: #e0ebfa; border-color: #2563eb; font-weight: 700; }
+      .cal-day.empty {
+        min-height: 86px;
+        background: transparent;
+        border-color: transparent;
+      }
+      .cal-date {
+        display: block;
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .calendar-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .calendar-form {
+        display: none;
+        grid-template-columns: minmax(160px, 1fr) 140px auto auto;
+        gap: 10px;
+        align-items: center;
+        margin-top: 16px;
+        padding: 14px;
+        background: #f8fafc;
+        border: 1px solid #e2edf7;
+        border-radius: 16px;
+      }
+      .calendar-form.show {
+        display: grid;
+      }
+      .calendar-form input {
+        width: 100%;
+        border: 1px solid #cbdde9;
+        border-radius: 12px;
+        padding: 10px 12px;
+        color: #0f2b3d;
+        font-family: inherit;
+      }
+      .cal-event {
+        display: block;
+        width: 100%;
+        margin-top: 4px;
+        padding: 4px 6px;
+        border-radius: 10px;
+        background: #dbeafe;
+        color: #1e40af;
+        font-size: 0.68rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-align: left;
+        overflow-wrap: anywhere;
+      }
       .task-item {
         display: flex;
         justify-content: space-between;
@@ -1300,6 +1382,9 @@
         .form-actions { flex-direction: column; }
         .share-notice { flex-direction: column; text-align: center; }
         .contribution-tips ul { padding-left: 16px; }
+        .calendar-grid { gap: 6px; }
+        .cal-day { min-height: 76px; padding: 6px; }
+        .calendar-form { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -1308,12 +1393,12 @@
       <aside class="sidebar">
         <div class="brand"><div class="brand-mark">H</div><div>Trợ Lý <br>Học Đường</div></div>
         <nav class="sidebar-nav">
-          <div class="sidebar-item" data-page="dashboard">📊 Bảng điều khiển</div>
-          <div class="sidebar-item" data-page="ai">🤖 Trợ Lý AI</div>
-          <div class="sidebar-item" data-page="exam">📚 Kho đề thi</div>
-          <div class="sidebar-item" data-page="library">📖 Thư viện</div>
-          <div class="sidebar-item" data-page="plan">📅 Kế hoạch học</div>
-          <div class="sidebar-item" data-page="profile">👤 Hồ sơ cá nhân</div>
+          <div class="sidebar-item" data-page="dashboard"> Bảng điều khiển</div>
+          <div class="sidebar-item" data-page="ai"> Trợ Lý AI</div>
+          <div class="sidebar-item" data-page="exam"> Kho đề thi</div>
+          <div class="sidebar-item" data-page="library"> Thư viện</div>
+          <div class="sidebar-item" data-page="plan"> Kế hoạch học</div>
+          <div class="sidebar-item" data-page="profile"> Hồ sơ cá nhân</div>
         </nav>
       </aside>
 
@@ -1321,87 +1406,90 @@
         <!-- BẢNG ĐIỀU KHIỂN (ban đầu) -->
         <div id="dashboardPage" class="page">
           <div class="card-white" style="padding-bottom: 20px;">
-            <div class="eyebadge">✨ Chào mừng quay trở lại!</div>
-            <h1 class="dashboard-heading" id="dashboardHeading">Chào mừng quay trở lại! 👋</h1>
+            <div class="eyebadge"> Chào mừng quay trở lại!</div>
+            <h1 class="dashboard-heading" id="dashboardHeading">Chào mừng quay trở lại! </h1>
             <p id="dashboardSubheading" style="color:#4a627a; margin-top: 8px;">Hôm nay bạn có <strong>3 lỗ hổng kiến thức</strong> cần củng cố và <strong>1 bài thi thử môn Hóa</strong>.</p>
           </div>
 
           <div class="top-cards">
-            <div class="top-card student-card"><div class="top-card-label">🔍 Phân tích lỗi sai</div><p>AI kiểm tra từng bước giải của bạn để chỉ ra lỗi sai bản chất.</p><a href="#" class="top-card-action">Kiểm tra ngay →</a></div>
-            <div class="top-card student-card"><div class="top-card-label">🎯 Luyện đề AI</div><p>Bộ câu hỏi được cá nhân hóa riêng theo trình độ của bạn.</p><a href="#" class="top-card-action">Bắt đầu luyện →</a></div>
-            <div class="top-card student-card"><div class="top-card-label">⚠️ Lỗ hổng kiến thức</div><p>Nhận diện những phần kiến thức bạn đang yếu nhất.</p><a href="#" class="top-card-action">Xem báo cáo →</a></div>
-            <div class="top-card teacher-card" id="teacherLoginDaysCard" style="display:none;"><div class="top-card-label">📅 Số ngày đăng nhập</div><p id="teacherLoginDays" style="font-size:1.1rem; font-weight:700; margin:16px 0 0;">0 ngày</p></div>
-            <div class="top-card teacher-card" id="teacherPostsCard" style="display:none;"><div class="top-card-label">📝 Số bài đã đăng</div><p id="teacherPostsCount" style="font-size:1.1rem; font-weight:700; margin:16px 0 0;">0 bài</p></div>
+            <div class="top-card student-card"><div class="top-card-label"> Phân tích lỗi sai</div><p>AI kiểm tra từng bước giải của bạn để chỉ ra lỗi sai bản chất.</p><a href="#" class="top-card-action">Kiểm tra ngay →</a></div>
+            <div class="top-card student-card"><div class="top-card-label"> Luyện đề AI</div><p>Bộ câu hỏi được cá nhân hóa riêng theo trình độ của bạn.</p><a href="#" class="top-card-action">Bắt đầu luyện →</a></div>
+            <div class="top-card student-card"><div class="top-card-label"> Lỗ hổng kiến thức</div><p>Nhận diện những phần kiến thức bạn đang yếu nhất.</p><a href="#" class="top-card-action">Xem báo cáo →</a></div>
+            <div class="top-card teacher-card" id="teacherLoginDaysCard" style="display:none;"><div class="top-card-label"> Số ngày đăng nhập</div><p id="teacherLoginDays" style="font-size:1.1rem; font-weight:700; margin:16px 0 0;">0 ngày</p></div>
+            <div class="top-card teacher-card" id="teacherPostsCard" style="display:none;"><div class="top-card-label"> Số bài đã đăng</div><p id="teacherPostsCount" style="font-size:1.1rem; font-weight:700; margin:16px 0 0;">0 bài</p></div>
           </div>
 
           <div id="studentStatsBlock" class="stats-mini">
-            <div class="stat-block"><div class="stat-label">Thời gian học tập</div><div class="stat-number">0h 0m</div><div class="stat-trend">0% tuần này</div></div>
-            <div class="stat-block"><div class="stat-label">Bài tập tự giải</div><div class="stat-number">0</div><div class="stat-trend">Chưa có dữ liệu</div></div>
-            <div class="stat-block"><div class="stat-label">Điểm TB thi thử</div><div class="stat-number">0</div><div class="stat-trend">Chưa có dữ liệu</div></div>
-            <div class="stat-block"><div class="stat-label">Khái niệm đã nắm</div><div class="stat-number">0</div><div class="stat-trend">Chưa có dữ liệu</div></div>
+            <div class="stat-block"><div class="stat-label">Thời gian học tập</div><div class="stat-number" id="studyTimeStat">0h 0m</div><div class="stat-trend" id="studyTimeTrend">Chưa có dữ liệu</div></div>
+            <div class="stat-block"><div class="stat-label">Bài tập tự giải</div><div class="stat-number" id="solvedExercisesStat">0</div><div class="stat-trend" id="solvedExercisesTrend">Chưa có dữ liệu</div></div>
+            <div class="stat-block"><div class="stat-label">Điểm TB thi thử</div><div class="stat-number" id="averageScoreStat">0</div><div class="stat-trend" id="averageScoreTrend">Chưa có dữ liệu</div></div>
+            <div class="stat-block"><div class="stat-label">Khái niệm đã nắm</div><div class="stat-number" id="masteredConceptsStat">0</div><div class="stat-trend" id="masteredConceptsTrend">Chưa có dữ liệu</div></div>
           </div>
 
-          <div class="two-columns">
-            <div class="chart-card" id="studentDashboardChart"><h3>📈 Bảng năng lực theo môn học</h3><p class="sub" style="font-size:0.7rem; color:#6883a0;">Đánh giá chi tiết từ bài kiểm tra AI</p>
+          <div class="two-columns" id="studentLearningOverview">
+            <div class="chart-card" id="studentDashboardChart"><h3> Bảng năng lực theo môn học</h3><p class="sub" style="font-size:0.7rem; color:#6883a0;">Đánh giá chi tiết từ bài kiểm tra AI</p>
               <div class="skill-table">
                 <div class="skill-table-header">
                   <span>Môn học</span>
                   <span>Độ thành thạo</span>
                   <span>Điểm</span>
                 </div>
-                <div class="skill-row">
-                  <div class="skill-label"><span>📐 Toán</span><small>Giải tích & Hình học</small></div>
-                  <div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div><span>78%</span></div>
-                  <div class="skill-score">7.8</div>
+                <div class="skill-row" data-skill-subject="Toán">
+                  <div class="skill-label"><span> Toán</span><small>Giải tích & Hình học</small></div>
+                  <div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span>0%</span></div>
+                  <div class="skill-score">0</div>
                 </div>
-                <div class="skill-row">
-                  <div class="skill-label"><span>⚛️ Vật lý</span><small>Dao động & Sóng</small></div>
-                  <div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-fill" style="width:76%"></div></div><span>76%</span></div>
-                  <div class="skill-score">7.6</div>
+                <div class="skill-row" data-skill-subject="Vật lý">
+                  <div class="skill-label"><span> Vật lý</span><small>Dao động & Sóng</small></div>
+                  <div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span>0%</span></div>
+                  <div class="skill-score">0</div>
                 </div>
-                <div class="skill-row highlight">
-                  <div class="skill-label"><span>🧪 Hóa</span><small>Este, Lipit & Hữu cơ</small></div>
-                  <div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div><span>92%</span></div>
-                  <div class="skill-score">9.2</div>
+                <div class="skill-row highlight" data-skill-subject="Hóa học">
+                  <div class="skill-label"><span> Hóa</span><small>Este, Lipit & Hữu cơ</small></div>
+                  <div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span>0%</span></div>
+                  <div class="skill-score">0</div>
                 </div>
-                <div class="skill-row">
-                  <div class="skill-label"><span>🗣️ Anh</span><small>Reading & Từ vựng</small></div>
-                  <div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div><span>70%</span></div>
-                  <div class="skill-score">7.0</div>
+                <div class="skill-row" data-skill-subject="Tiếng Anh">
+                  <div class="skill-label"><span> Anh</span><small>Reading & Từ vựng</small></div>
+                  <div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span>0%</span></div>
+                  <div class="skill-score">0</div>
                 </div>
-                <div class="skill-row">
-                  <div class="skill-label"><span>📖 Văn</span><small>Phân tích tác phẩm</small></div>
-                  <div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-fill" style="width:68%"></div></div><span>68%</span></div>
-                  <div class="skill-score">6.8</div>
+                <div class="skill-row" data-skill-subject="Ngữ văn">
+                  <div class="skill-label"><span> Văn</span><small>Phân tích tác phẩm</small></div>
+                  <div class="skill-bar-wrap"><div class="skill-bar"><div class="skill-fill" style="width:0%"></div></div><span>0%</span></div>
+                  <div class="skill-score">0</div>
                 </div>
               </div>
             </div>
-            <div id="studentTimelineCard" class="timeline-card"><h3>🗓️ Hành trình hôm nay</h3><p class="sub" style="font-size:0.7rem; color:#6883a0;">Dựa trên lỗ hổng & mục tiêu</p>
-              <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><p>Củng cố Công thức Hóa hữu cơ</p><div class="timeline-time">14:00 Today · Ưu tiên cao</div></div></div>
-              <div class="timeline-item"><div class="timeline-dot blue"></div><div class="timeline-content"><p>Luyện đề Tiếng Anh (Reading)</p><div class="timeline-time">16:30 Today · Thi thử số 3</div></div></div>
-              <div class="timeline-item"><div class="timeline-dot gray"></div><div class="timeline-content"><p>Xem lại Ghi chú Văn học</p><div class="timeline-time">08:00 Tomorrow · Ôn tập</div></div></div>
+            <div id="studentTimelineCard" class="timeline-card"><h3> Hành trình hôm nay</h3><p class="sub" style="font-size:0.7rem; color:#6883a0;">Dựa trên lỗ hổng & mục tiêu</p>
+              <div class="timeline-item"><div class="timeline-dot gray"></div><div class="timeline-content"><p>không có lịch trình</p><div class="timeline-time"> </div></div></div>
               <a href="#" class="top-card-action" style="margin-top: 12px; display: inline-block;">Xem lịch trình đầy đủ →</a>
             </div>
           </div>
 
-          <div class="subjects-grid">
-            <div class="subject-card"><div class="subject-title"><span>📐 Toán học</span><span class="gap-badge">Lỗ hổng: Oxyz</span></div><div class="progress-item"><div class="progress-label"><span>Giải tích</span><span>75%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:75%"></div></div></div><div class="progress-item"><div class="progress-label"><span>Hình Oxyz</span><span>42%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:42%; background:#f59e0b"></div></div></div><a href="#" class="btn-sm">Lấp lỗ hổng ngay</a></div>
-            <div class="subject-card"><div class="subject-title"><span>⚛️ Vật lý</span><span class="gap-badge">Yếu: Sóng dừng</span></div><div class="progress-item"><div class="progress-label"><span>Dao động</span><span>90%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:90%"></div></div></div><div class="progress-item"><div class="progress-label"><span>Sóng cơ & âm</span><span>26%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:26%; background:#f59e0b"></div></div></div><a href="#" class="btn-sm">Củng cố sóng cơ</a></div>
-            <div class="subject-card"><div class="subject-title"><span>🧪 Hóa học</span><span class="gap-badge">Este - Lipit</span></div><div class="progress-item"><div class="progress-label"><span>Hữu cơ</span><span>85%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:85%"></div></div></div><div class="progress-item"><div class="progress-label"><span>Vô cơ</span><span>65%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:65%"></div></div></div><a href="#" class="btn-sm">Thi thử Hóa 20h tối</a></div>
+          <div class="subjects-grid" id="studentSubjectsGrid">
+            <div class="subject-card" data-subject-card="Toán"><div class="subject-title"><span> Toán học</span><span class="gap-badge">Chưa có dữ liệu</span></div><div class="progress-item" data-topic-key="giải tích"><div class="progress-label"><span>Giải tích</span><span>0%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:0%"></div></div></div><div class="progress-item" data-topic-key="hình"><div class="progress-label"><span>Hình Oxyz</span><span>0%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:0%; background:#64748b"></div></div></div><a href="#" class="btn-sm">Chưa có kế hoạch</a></div>
+            <div class="subject-card" data-subject-card="Vật lý"><div class="subject-title"><span> Vật lý</span><span class="gap-badge">Chưa có dữ liệu</span></div><div class="progress-item" data-topic-key="dao động"><div class="progress-label"><span>Dao động</span><span>0%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:0%"></div></div></div><div class="progress-item" data-topic-key="sóng"><div class="progress-label"><span>Sóng cơ & âm</span><span>0%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:0%; background:#64748b"></div></div></div><a href="#" class="btn-sm">Chưa có kế hoạch</a></div>
+            <div class="subject-card" data-subject-card="Hóa học"><div class="subject-title"><span> Hóa học</span><span class="gap-badge">Chưa có dữ liệu</span></div><div class="progress-item" data-topic-key="hữu cơ"><div class="progress-label"><span>Hữu cơ</span><span>0%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:0%"></div></div></div><div class="progress-item" data-topic-key="vô cơ"><div class="progress-label"><span>Vô cơ</span><span>0%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:0%"></div></div></div><a href="#" class="btn-sm">Chưa có kế hoạch</a></div>
           </div>
         </div>
 
         <!-- HỒ SƠ CÁ NHÂN -->
         <div id="profilePage" class="page" style="display: none;">
-          <div class="section-title" style="margin-bottom: 18px;">👤 Hồ sơ cá nhân</div>
+          <div class="section-title" style="margin-bottom: 18px;"> Hồ sơ cá nhân</div>
           <div class="profile-grid">
             <div class="profile-summary card-white">
               <div class="profile-header">
-                <div class="avatar-circle" id="profileAvatar">A</div>
+                <div class="avatar-circle" id="profileAvatar" role="button" tabindex="0" title="Bấm để đổi avatar">A</div>
                 <div>
                   <div class="profile-label" id="profileRoleLabel">Hồ sơ học sinh</div>
                   <h1 class="profile-name" id="profileName">Chưa đăng nhập</h1>
                   <div class="profile-email" id="profileEmail">Chưa có email</div>
+                  <div class="avatar-tools">
+                    <button class="btn btn-outline" id="changeAvatarBtn" type="button">Đổi avatar</button>
+                    <button class="btn btn-outline" id="removeAvatarBtn" type="button">Xóa avatar</button>
+                    <input id="avatarFileInput" type="file" accept="image/*" hidden />
+                  </div>
                 </div>
               </div>
               <div class="profile-badges" id="profileBadges">
@@ -1415,22 +1503,22 @@
                 <div class="stat-card-small"><div class="stat-number">0</div><div class="stat-label">Khái niệm nắm</div></div>
               </div>
               <div class="profile-actions">
-                <button class="btn btn-outline" id="printProfileBtn">🖨️ In hồ sơ</button>
-                <button class="btn btn-outline" id="logoutBtn">🚪 Đăng xuất</button>
+                <button class="btn btn-outline" id="printProfileBtn"> In hồ sơ</button>
+                <button class="btn btn-outline" id="logoutBtn"> Đăng xuất</button>
               </div>
             </div>
 
             <div class="profile-details card-white">
-              <div class="section-title">👤 Hồ sơ cá nhân</div>
+              <div class="section-title"> Hồ sơ cá nhân</div>
               <p style="color:#5b7c9c; margin-bottom: 24px;">Quản lý thông tin tài khoản và cài đặt học tập của bạn.</p>
-              <div class="form-row"><label>Họ và tên</label><input id="profileFullName" type="text" value="" readonly /></div>
-              <div class="form-row"><label>Email</label><input id="profileEmailInput" type="email" value="" readonly /></div>
-              <div class="form-row"><label id="profileSchoolLabel">Trường THPT</label><input id="profileSchool" type="text" value="" readonly /></div>
-              <div class="form-row"><label id="profileClassLabel">Khối / Lớp</label><input id="profileClass" type="text" value="" readonly /></div>
+              <div class="form-row"><label>Họ và tên</label><input id="profileFullName" type="text" value="" placeholder="Nhập họ và tên" /></div>
+              <div class="form-row"><label>Email</label><input id="profileEmailInput" type="email" value="" placeholder="Nhập email" /></div>
+              <div class="form-row"><label id="profileSchoolLabel">Trường THPT</label><input id="profileSchool" type="text" value="" placeholder="Nhập trường THPT" /></div>
+              <div class="form-row"><label id="profileClassLabel">Khối / Lớp</label><input id="profileClass" type="text" value="" placeholder="VD: 12A1" /></div>
 
               <div id="teacherProfileSection" style="display:none;">
                 <div class="section-divider"></div>
-                <h3 style="margin-bottom:16px;">👩‍🏫 Hồ sơ giáo viên</h3>
+                <h3 style="margin-bottom:16px;"> Hồ sơ giáo viên</h3>
                 <div class="form-row"><label>Trạng thái hoạt động</label>
                   <select id="teacherStatus" class="form-control">
                     <option value="active">Đang hoạt động</option>
@@ -1443,25 +1531,25 @@
 
               <div class="section-divider"></div>
               <div class="security-row"><div>
-                  <div class="security-title">🔔 Thông báo học tập</div>
+                  <div class="security-title"> Thông báo học tập</div>
                   <div class="security-desc">Nhận lời nhắc làm bài tập và kế hoạch học tập hàng ngày.</div>
                 </div>
                 <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
               </div>
               <div class="security-row"><div>
-                  <div class="security-title">🔐 Xác thực 2 lớp</div>
+                  <div class="security-title"> Xác thực 2 lớp</div>
                   <div class="security-desc">Tăng cường bảo mật cho tài khoản của bạn.</div>
                 </div>
                 <label class="switch"><input type="checkbox"><span class="slider"></span></label>
               </div>
               <div class="security-row"><div>
-                  <div class="security-title">🤝 Chia sẻ hỗ trợ</div>
+                  <div class="security-title"> Chia sẻ hỗ trợ</div>
                   <div class="security-desc">Cho phép giáo viên xem tiến độ học tập.</div>
                 </div>
                 <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
               </div>
               <div class="form-row" style="margin-top: 20px;">
-                <button class="btn btn-primary" id="saveProfileBtn">💾 Lưu hồ sơ</button>
+                <button class="btn btn-primary" id="saveProfileBtn"> Lưu hồ sơ</button>
               </div>
             </div>
           </div>
@@ -1469,17 +1557,23 @@
 
         <!-- KẾ HOẠCH HỌC -->
         <div id="planPage" class="page" style="display: none;">
-          <div class="card-white"><div class="section-title">📅 Kế hoạch học tập · Tháng 4, 2026</div><div class="calendar-grid" id="calendarGrid"></div></div>
-          <div class="card-white"><div class="section-title">📌 Nhiệm vụ hôm nay</div>
-            <div class="task-item"><div class="task-time">08:00</div><div class="task-name">Học từ vựng Unit 5</div><div class="task-subj">Tiếng Anh</div></div>
-            <div class="task-item"><div class="task-time">10:00</div><div class="task-name">Làm bài tập tích phân</div><div class="task-subj">Toán học</div></div>
-            <div class="task-item"><div class="task-time">14:30</div><div class="task-name">Đọc "Vợ chồng A Phủ"</div><div class="task-subj">Ngữ văn</div></div>
-            <div class="task-item"><div class="task-time">16:00</div><div class="task-name">Ôn tập chương 2 (Dao động)</div><div class="task-subj">Vật lý</div></div>
+          <div class="card-white">
+            <div class="calendar-toolbar">
+              <div class="section-title" style="margin-bottom: 0;"> Kế hoạch học tập · Tháng 4, 2026</div>
+              <button class="btn btn-primary" id="addCalendarEventBtn" type="button">+ Thêm sự kiện</button>
+            </div>
+            <form class="calendar-form" id="calendarEventForm">
+              <input id="calendarEventTitle" type="text" placeholder="Tên sự kiện, ví dụ: Ôn Toán chương 2" />
+              <input id="calendarEventDate" type="date" min="2026-04-01" max="2026-04-30" value="2026-04-01" />
+              <input id="calendarEventTime" type="time" />
+              <button class="btn btn-primary" type="submit">Lưu</button>
+              <button class="btn btn-outline" id="cancelCalendarEventBtn" type="button">Hủy</button>
+            </form>
+            <div class="calendar-grid" id="calendarGrid"></div>
+          </div>
+          <div class="card-white"><div class="section-title"> Nhiệm vụ hôm nay</div>
           </div>
           <div class="card-white"><div class="section-title">🎯 Mục tiêu tuần này</div>
-            <div class="goal-progress"><div class="goal-label"><span>Hoàn thành 10 bài thi thử</span><span>60%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:60%"></div></div></div>
-            <div class="goal-progress"><div class="goal-label"><span>Học 50 từ vựng mới</span><span>85%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:85%"></div></div></div>
-            <div class="goal-progress"><div class="goal-label"><span>Giải 20 bài tích phân</span><span>30%</span></div><div class="progress-bar-bg"><div class="progress-fill" style="width:30%"></div></div></div>
           </div>
         </div>
 
@@ -1500,7 +1594,7 @@
         body {
             background: linear-gradient(145deg, #eef2f7 0%, #d9e2ec 100%);
             min-height: 100vh;
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: "Times New Roman", Times, serif;
         }
 
         #aiPage {
@@ -1839,6 +1933,214 @@
             background: #b9ccdf;
             border-radius: 10px;
         }
+
+        /* Corporate SaaS theme: blue accent, white surfaces, gray canvas */
+        :root {
+            --font-main: "Times New Roman", Times, serif;
+            --page-bg: #f3f6fb;
+            --surface: #ffffff;
+            --surface-soft: #f8fafc;
+            --accent: #2563eb;
+            --accent-strong: #1d4ed8;
+            --accent-soft: #eaf2ff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --text-soft: #475569;
+            --border-soft: #dbe4ef;
+            --shadow-soft: 0 14px 32px rgba(15, 23, 42, 0.07);
+        }
+
+        *,
+        *::before,
+        *::after {
+            font-family: var(--font-main) !important;
+            letter-spacing: 0 !important;
+        }
+
+        body,
+        .dashboard-app,
+        .main-panel,
+        #aiPage {
+            background: var(--page-bg) !important;
+            color: var(--text-main) !important;
+        }
+
+        .sidebar,
+        .card-white,
+        .chart-card,
+        .timeline-card,
+        .subject-card,
+        .profile-summary,
+        .profile-details,
+        .card-ai-premium,
+        .chat-main-modern,
+        .history-premium,
+        .question-item,
+        .result-summary,
+        .library-card,
+        .document-form,
+        .share-notice,
+        .exam-result-box {
+            background: var(--surface) !important;
+            border-color: var(--border-soft) !important;
+            box-shadow: var(--shadow-soft) !important;
+            color: var(--text-main) !important;
+        }
+
+        .sidebar {
+            border-right: 1px solid var(--border-soft) !important;
+        }
+
+        .brand,
+        .section-title,
+        .section-title-ai,
+        .dashboard-heading,
+        .top-card-label,
+        .skill-score,
+        .subject-title,
+        .profile-name,
+        .library-title,
+        .question-number,
+        .question-text,
+        label {
+            color: var(--text-main) !important;
+        }
+
+        p,
+        small,
+        .sub,
+        .library-desc,
+        .timeline-time,
+        .profile-role,
+        .security-desc,
+        .empty-history,
+        .exam-info,
+        .task-subj,
+        .contribution-tips li {
+            color: var(--text-muted) !important;
+        }
+
+        .brand-mark,
+        .btn-primary,
+        .btn-success,
+        .btn-send,
+        .category-tab.active,
+        .score-circle,
+        .timeline-dot,
+        .progress-fill,
+        .skill-fill {
+            background: var(--accent) !important;
+            border-color: var(--accent) !important;
+            color: #ffffff !important;
+        }
+
+        .btn-primary:hover,
+        .btn-send:hover {
+            background: var(--accent-strong) !important;
+        }
+
+        .btn,
+        .btn-outline,
+        .chip,
+        .filter-select,
+        .form-control,
+        input,
+        select,
+        textarea {
+            background: var(--surface) !important;
+            border-color: var(--border-soft) !important;
+            color: var(--text-main) !important;
+        }
+
+        .btn-outline:hover,
+        .chip:hover,
+        .sidebar-item:hover,
+        .sidebar-item.active,
+        .eyebadge,
+        .ai-badge,
+        .gap-badge,
+        .level-badge,
+        .cal-day.today {
+            background: var(--accent-soft) !important;
+            border-color: var(--accent) !important;
+            color: var(--accent-strong) !important;
+        }
+
+        .top-card,
+        .student-card,
+        .teacher-card,
+        .exam-header,
+        .section-title-ai {
+            background: var(--surface) !important;
+            border: 1px solid var(--border-soft) !important;
+            color: var(--text-main) !important;
+            box-shadow: var(--shadow-soft) !important;
+        }
+
+        .top-card-action,
+        .btn-sm,
+        .library-meta,
+        .task-time,
+        .question-number,
+        .security-title,
+        .login-forgot,
+        a {
+            color: var(--accent) !important;
+        }
+
+        .progress-bar-bg,
+        .skill-bar,
+        .cal-day,
+        .chat-messages,
+        .history-list-premium,
+        .bubble-ai,
+        .bubble-user,
+        .stat-card-small,
+        .option-label,
+        .exam-review,
+        .review-question {
+            background: var(--surface-soft) !important;
+            border-color: var(--border-soft) !important;
+            color: var(--text-main) !important;
+        }
+
+        .option-label:hover,
+        .option-label.selected {
+            background: var(--accent-soft) !important;
+            border-color: var(--accent) !important;
+        }
+
+        .exam-header h3,
+        .top-card p,
+        .top-card .top-card-action {
+            color: var(--text-main) !important;
+        }
+
+        .correct-answer,
+        .user-answer,
+        .review-stats,
+        .api-status,
+        .message-box {
+            background: var(--accent-soft) !important;
+            border-color: var(--border-soft) !important;
+            color: var(--accent-strong) !important;
+        }
+
+        .error-message,
+        .wrong-answer {
+            background: #eef2f7 !important;
+            border-color: var(--border-soft) !important;
+            color: #334155 !important;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: #e5eaf2 !important;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb,
+        .history-list-premium::-webkit-scrollbar-thumb {
+            background: #9fb7d8 !important;
+        }
     </style>
 </head>
 <body>
@@ -1846,10 +2148,10 @@
     <div class="card-ai-premium">
         <div class="section-title-ai">
             <div class="title-left">
-                🤖 Trợ Lý Học Tập AI
+                 Trợ Lý Học Tập AI
                 <span class="ai-badge">Gemini API 1.5 Flash</span>
             </div>
-            <div class="api-status" id="apiStatusText">🔄 Đang kiểm tra API...</div>
+            <div class="api-status" id="apiStatusText"> Đang kiểm tra API...</div>
         </div>
 
         <div class="ai-chat-layout">
@@ -1872,17 +2174,17 @@
 
                 <div class="chat-input-modern">
                     <textarea id="chatInput" rows="1" placeholder="Nhập câu hỏi của bạn..."></textarea>
-                    <button class="btn-send" id="sendChatBtn">📤 Gửi</button>
+                    <button class="btn-send" id="sendChatBtn"> Gửi</button>
                 </div>
             </div>
 
             <div class="history-premium">
                 <div class="history-header-premium">
-                    <span>📜 Lịch sử trò chuyện</span>
+                    <span> Lịch sử trò chuyện</span>
                     <button id="clearAllHistoryBtn" class="btn-clear-history">Xóa tất cả</button>
                 </div>
                 <div id="historyListContainer" class="history-list-premium">
-                    <div class="empty-history">✨ Chưa có hội thoại nào</div>
+                    <div class="empty-history"> Chưa có hội thoại nào</div>
                 </div>
             </div>
         </div>
@@ -1894,7 +2196,7 @@
     // CẤU HÌNH API GEMINI (THÊM API KEY CHÍNH THỨC VÀO ĐÂY)
     // --------------------------------------------------------------
     // Cấu hình Gemini đang dùng cho trợ lý AI trên dashboard.
-    const GEMINI_API_KEY = "AIzaSyDIt9CmQX2NnWyAIy1DjXdxBmjIlfxIshQ";
+    const GEMINI_API_KEY = "AIzaSyDgUccBAcYBuB-KA5zZOeHFeIdk18rW7Z8";
     const GEMINI_MODEL = "gemini-2.5-flash";
     const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
     
@@ -1959,8 +2261,8 @@
                 }]
             }],
             generationConfig: {
-                temperature: 0.7,
-                maxOutputTokens: 800,
+                temperature: 2.0,
+                maxOutputTokens: 8000,
                 topP: 0.95
             }
         };
@@ -2065,7 +2367,7 @@
         chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
         setTimeout(() => {
             if(errorDiv.parentNode) errorDiv.remove();
-        }, 6000);
+        }, 600);
     }
     
     // ========== Lưu lịch sử vào localStorage và cập nhật sidebar ==========
@@ -2170,7 +2472,7 @@
     // ========== Xử lý gửi câu hỏi chính ==========
     async function handleSendMessage() {
         if (isLoading) {
-            showErrorMessage("⚠️ AI đang trả lời, vui lòng chờ!");
+            showErrorMessage(" AI đang trả lời, vui lòng chờ!");
             return;
         }
         const question = chatInput.value.trim();
@@ -2204,8 +2506,8 @@
             removeTypingIndicator();
             console.error("Gemini error:", error);
             let errorMsg = error.message || "Không thể kết nối AI, hãy thử lại.";
-            if (errorMsg.includes("API key")) errorMsg = "🔑 API Key không hợp lệ hoặc chưa cấu hình. Vui lòng kiểm tra lại key Gemini.";
-            else if (errorMsg.includes("fetch")) errorMsg = "🌐 Lỗi mạng, không thể gọi API. Kiểm tra kết nối internet.";
+            if (errorMsg.includes("API key")) errorMsg = " API Key không hợp lệ hoặc chưa cấu hình. Vui lòng kiểm tra lại key Gemini.";
+            else if (errorMsg.includes("fetch")) errorMsg = " Lỗi mạng, không thể gọi API. Kiểm tra kết nối internet.";
             showErrorMessage(errorMsg);
             // Không lưu lịch sử nếu lỗi
         } finally {
@@ -2269,7 +2571,7 @@
             // Thêm thông báo nhẹ xác nhận
             const confirmMsg = document.createElement('div');
             confirmMsg.classList.add('message', 'ai');
-            confirmMsg.innerHTML = `<div class="avatar-ai">✅</div><div class="bubble-ai" style="background:#e6f4ea;">✨ Gemini API đã kết nối thành công! Bạn có thể đặt câu hỏi học tập ngay.</div>`;
+            confirmMsg.innerHTML = `<div class="avatar-ai">✅</div><div class="bubble-ai" style="background:#e6f4ea;"> Gemini API đã kết nối thành công! Bạn có thể đặt câu hỏi học tập ngay.</div>`;
             chatMessagesDiv.appendChild(confirmMsg);
             chatMessagesDiv.scrollTop = chatMessagesDiv.scrollHeight;
         }
@@ -2311,7 +2613,7 @@
     async function testApiKey() {
         const statusDiv = document.getElementById('apiStatusText');
         if (!GEMINI_API_KEY) {
-            statusDiv.innerHTML = '⚠️ Chua cau hinh GEMINI_API_KEY';
+            statusDiv.innerHTML = '⚠️ Chưa có cấu hinh GEMINI';
             statusDiv.style.background = '#fff1e0';
             statusDiv.style.color = '#9a5a00';
             return;
@@ -2323,11 +2625,11 @@
                 throw new Error(`HTTP ${response.status}`);
             }
 
-            statusDiv.innerHTML = `✅ Gemini san sang (${GEMINI_MODEL})`;
+            statusDiv.innerHTML = `✅ Gemini đã sẵn sàng (${GEMINI_MODEL})`;
             statusDiv.style.background = '#e6f7e6';
             statusDiv.style.color = '#2b6e3c';
         } catch (error) {
-            statusDiv.innerHTML = '⚠️ Khong ket noi duoc Gemini API';
+            statusDiv.innerHTML = ' Không kết nối được với Gemini AI';
             statusDiv.style.background = '#fff1e0';
             statusDiv.style.color = '#9a5a00';
         }
@@ -2348,7 +2650,7 @@
             body: JSON.stringify({
                 contents: [{
                     parts: [{
-                        text: `Ban la tro ly hoc tap bang tieng Viet. Hay tra loi ro rang, de hieu, co cau truc, uu tien huong dan theo tung buoc va vi du ngan khi can.\n\nCau hoi: ${question}`
+                        text: `Bạn là trợ lý hoc tập bằng tiếng Việt. Hãy trả lời rõ ràng, dễ hiểu, có cấu trúc, ưu tiên hướng dẫn theo từng bước và ví dụ ngắn khi cần.\n\nCâu hỏi: ${question}`
                     }]
                 }],
                 generationConfig: {
@@ -2565,9 +2867,9 @@
         <div id="examPage" class="page" style="display: none;">
           <div class="card-white"><div class="section-title">📚 Kho đề thi</div><p>Đề thi thử, kiểm tra từ các trường chuyên.</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap:16px; margin-top:20px;">
-              <div class="library-card"><div class="library-icon">📐</div><div class="library-title">Toán 2026</div><div class="library-desc">Chuyên KHTN</div><div class="library-meta">⬇️ Tải</div></div>
-              <div class="library-card"><div class="library-icon">⚛️</div><div class="library-title">Vật Lý</div><div class="library-desc">Dao động cơ</div><div class="library-meta">⬇️ Tải</div></div>
-              <div class="library-card"><div class="library-icon">🧪</div><div class="library-title">Hóa hữu cơ</div><div class="library-desc">Este - Lipit</div><div class="library-meta">⬇️ Tải</div></div>
+              <div class="library-card"><div class="library-icon"></div><div class="library-title">Toán 2026</div><div class="library-desc">Chuyên KHTN</div><div class="library-meta">⬇️ Tải</div></div>
+              <div class="library-card"><div class="library-icon"></div><div class="library-title">Vật Lý</div><div class="library-desc">Dao động cơ</div><div class="library-meta">⬇️ Tải</div></div>
+              <div class="library-card"><div class="library-icon"></div><div class="library-title">Hóa hữu cơ</div><div class="library-desc">Este - Lipit</div><div class="library-meta">⬇️ Tải</div></div>
             </div>
           </div>
           <div class="card-white"><div class="section-title">⚙️ Tạo đề cá nhân</div>
@@ -2579,12 +2881,12 @@
                   <label>Môn học</label>
                   <select id="subjectSelect" class="form-control">
                     <option value="">Chọn môn</option>
-                    <option value="Toán">📐 Toán</option>
-                    <option value="Vật lý">⚛️ Vật lý</option>
-                    <option value="Hóa học">🧪 Hóa học</option>
-                    <option value="Tiếng Anh">🗣️ Tiếng Anh</option>
-                    <option value="Ngữ văn">📖 Ngữ văn</option>
-                    <option value="Sinh học">🧬 Sinh học</option>
+                    <option value="Toán"> Toán</option>
+                    <option value="Vật lý"> Vật lý</option>
+                    <option value="Hóa học"> Hóa học</option>
+                    <option value="Tiếng Anh"> Tiếng Anh</option>
+                    <option value="Ngữ văn"> Ngữ văn</option>
+                    <option value="Sinh học"> Sinh học</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -2648,33 +2950,33 @@
                 <label>Môn học:</label>
                 <select id="subjectFilter" class="filter-select">
                   <option value="all">Tất cả môn</option>
-                  <option value="toan">📐 Toán học</option>
-                  <option value="ly">⚛️ Vật lý</option>
-                  <option value="hoa">🧪 Hóa học</option>
-                  <option value="anh">🗣️ Tiếng Anh</option>
-                  <option value="van">📖 Ngữ văn</option>
-                  <option value="su">🗺️ Lịch sử</option>
-                  <option value="dia">🌍 Địa lý</option>
-                  <option value="sinh">🧬 Sinh học</option>
+                  <option value="toan"> Toán học</option>
+                  <option value="ly"> Vật lý</option>
+                  <option value="hoa"> Hóa học</option>
+                  <option value="anh"> Tiếng Anh</option>
+                  <option value="van"> Ngữ văn</option>
+                  <option value="su"> Lịch sử</option>
+                  <option value="dia"> Địa lý</option>
+                  <option value="sinh"> Sinh học</option>
                 </select>
               </div>
               <div class="filter-group">
                 <label>Lớp:</label>
                 <select id="gradeFilter" class="filter-select">
                   <option value="all">Tất cả lớp</option>
-                  <option value="10">🏫 Lớp 10</option>
-                  <option value="11">📚 Lớp 11</option>
-                  <option value="12">🎓 Lớp 12</option>
+                  <option value="10"> Lớp 10</option>
+                  <option value="11"> Lớp 11</option>
+                  <option value="12"> Lớp 12</option>
                 </select>
               </div>
               <div class="filter-group">
                 <label>Loại tài liệu:</label>
                 <select id="typeFilter" class="filter-select">
                   <option value="all">Tất cả</option>
-                  <option value="de-thi">📝 Đề thi</option>
-                  <option value="bai-giang">📚 Bài giảng</option>
-                  <option value="chuyen-de">🎯 Chuyên đề</option>
-                  <option value="so-tay">📋 Sổ tay</option>
+                  <option value="de-thi"> Đề thi</option>
+                  <option value="bai-giang"> Bài giảng</option>
+                  <option value="chuyen-de"> Chuyên đề</option>
+                  <option value="so-tay"> Sổ tay</option>
                 </select>
               </div>
               <div class="search-group">
@@ -2938,14 +3240,14 @@
                   <label>Môn học</label>
                   <select id="docSubject" required>
                     <option value="">Chọn môn</option>
-                    <option value="toan">📐 Toán học</option>
-                    <option value="ly">⚛️ Vật lý</option>
-                    <option value="hoa">🧪 Hóa học</option>
-                    <option value="anh">🗣️ Tiếng Anh</option>
-                    <option value="van">📖 Ngữ văn</option>
-                    <option value="su">🏛️ Lịch sử</option>
-                    <option value="dia">🌍 Địa lý</option>
-                    <option value="sinh">🧬 Sinh học</option>
+                    <option value="toan"> Toán học</option>
+                    <option value="ly"> Vật lý</option>
+                    <option value="hoa"> Hóa học</option>
+                    <option value="anh"> Tiếng Anh</option>
+                    <option value="van"> Ngữ văn</option>
+                    <option value="su"> Lịch sử</option>
+                    <option value="dia"> Địa lý</option>
+                    <option value="sinh"> Sinh học</option>
                   </select>
                 </div>
               </div>
@@ -2955,14 +3257,14 @@
                   <label>Loại tài liệu</label>
                   <select id="docType" required>
                     <option value="">Chọn loại</option>
-                    <option value="ghi-chu">📝 Ghi chú học tập</option>
-                    <option value="bai-tap">✏️ Bài tập & lời giải</option>
-                    <option value="de-thi">📝 Đề thi thử</option>
-                    <option value="chuyen-de">🎯 Chuyên đề</option>
-                    <option value="bai-giang">📚 Bài giảng</option>
-                    <option value="so-tay">📋 Sổ tay</option>
-                    <option value="flashcard">🃏 Flashcard</option>
-                    <option value="video">🎥 Video bài giảng</option>
+                    <option value="ghi-chu"> Ghi chú học tập</option>
+                    <option value="bai-tap"> Bài tập & lời giải</option>
+                    <option value="de-thi"> Đề thi thử</option>
+                    <option value="chuyen-de"> Chuyên đề</option>
+                    <option value="bai-giang"> Bài giảng</option>
+                    <option value="so-tay"> Sổ tay</option>
+                    <option value="flashcard"> Flashcard</option>
+                    <option value="video"> Video bài giảng</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -3022,10 +3324,10 @@
               <div class="contribution-tips">
                 <h4>💡 Mẹo đóng góp:</h4>
                 <ul>
-                  <li>📄 Chia sẻ file PDF, Word, hoặc link Google Drive</li>
-                  <li>✨ Đặt tên rõ ràng, mô tả chi tiết để dễ tìm</li>
-                  <li>🏷️ Thêm nhiều tags để tài liệu dễ tìm hơn</li>
-                  <li>🤝 Tài liệu chất lượng sẽ được đánh dấu "Nổi bật"</li>
+                  <li> Chia sẻ file PDF, Word, hoặc link Google Drive</li>
+                  <li> Đặt tên rõ ràng, mô tả chi tiết để dễ tìm</li>
+                  <li> Thêm nhiều tags để tài liệu dễ tìm hơn</li>
+                  <li> Tài liệu chất lượng sẽ được đánh dấu "Nổi bật"</li>
                 </ul>
               </div>
 
@@ -3049,14 +3351,14 @@
                   <label>Môn học</label>
                   <select id="questionSubject" required>
                     <option value="">Chọn môn</option>
-                    <option value="Toán">📐 Toán</option>
-                    <option value="Vật lý">⚛️ Vật lý</option>
-                    <option value="Hóa học">🧪 Hóa học</option>
-                    <option value="Tiếng Anh">🗣️ Tiếng Anh</option>
-                    <option value="Ngữ văn">📖 Ngữ văn</option>
-                    <option value="Lịch sử">🏛️ Lịch sử</option>
-                    <option value="Địa lý">🌍 Địa lý</option>
-                    <option value="Sinh học">🧬 Sinh học</option>
+                    <option value="Toán"> Toán</option>
+                    <option value="Vật lý"> Vật lý</option>
+                    <option value="Hóa học"> Hóa học</option>
+                    <option value="Tiếng Anh"> Tiếng Anh</option>
+                    <option value="Ngữ văn"> Ngữ văn</option>
+                    <option value="Lịch sử"> Lịch sử</option>
+                    <option value="Địa lý"> Địa lý</option>
+                    <option value="Sinh học"> Sinh học</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -3163,11 +3465,32 @@
           if(item.getAttribute('data-page') === pageId) item.classList.add('active');
           else item.classList.remove('active');
         });
+        if (pageId === 'dashboard' && typeof updateDashboardForRole === 'function') {
+          updateDashboardForRole();
+        }
       }
       document.querySelectorAll('.sidebar-item').forEach(item => {
         item.addEventListener('click', () => showPage(item.getAttribute('data-page')));
       });
       showPage('dashboard');
+
+      window.addEventListener('beforeunload', () => {
+        backupCurrentUserActivity(saveCurrentOnlineSession());
+      });
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+          backupCurrentUserActivity(saveCurrentOnlineSession());
+        } else {
+          onlineSessionStartedAt = Date.now();
+          renderStudentDashboardData();
+        }
+      });
+      setInterval(() => {
+        const currentUser = getCurrentUser();
+        if (currentUser && currentUser.role !== 'teacher') {
+          renderStudentDashboardData();
+        }
+      }, 60000);
 
       function getCurrentUser() {
         const storedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
@@ -3180,6 +3503,246 @@
         } else {
           sessionStorage.setItem('currentUser', JSON.stringify(user));
         }
+      }
+
+      const QUIZ_RESULTS_STORAGE_KEY = 'studentQuizResults';
+      const ONLINE_TIME_STORAGE_KEY = 'studentOnlineTime';
+      let onlineSessionStartedAt = Date.now();
+
+      function getCurrentUserKey() {
+        const currentUser = getCurrentUser();
+        return currentUser?.id || currentUser?.email || 'guest';
+      }
+
+      function getStoredOnlineTime() {
+        try {
+          return JSON.parse(localStorage.getItem(ONLINE_TIME_STORAGE_KEY) || '{}');
+        } catch (error) {
+          return {};
+        }
+      }
+
+      function getCurrentOnlineMinutes() {
+        const onlineTime = getStoredOnlineTime();
+        const savedMinutes = Number(onlineTime[getCurrentUserKey()] || 0);
+        const sessionMinutes = document.visibilityState === 'visible'
+          ? (Date.now() - onlineSessionStartedAt) / 60000
+          : 0;
+        return savedMinutes + sessionMinutes;
+      }
+
+      function saveCurrentOnlineSession() {
+        const elapsedMinutes = (Date.now() - onlineSessionStartedAt) / 60000;
+        if (elapsedMinutes <= 0) return 0;
+
+        const onlineTime = getStoredOnlineTime();
+        const userKey = getCurrentUserKey();
+        onlineTime[userKey] = Number(onlineTime[userKey] || 0) + elapsedMinutes;
+        localStorage.setItem(ONLINE_TIME_STORAGE_KEY, JSON.stringify(onlineTime));
+        onlineSessionStartedAt = Date.now();
+        return elapsedMinutes;
+      }
+
+      function backupCurrentUserActivity(onlineMinutes) {
+        const currentUser = getCurrentUser();
+        if (!currentUser?.id || !onlineMinutes) return;
+
+        const payload = JSON.stringify({
+          userId: currentUser.id,
+          onlineMinutes
+        });
+
+        if (navigator.sendBeacon) {
+          const blob = new Blob([payload], { type: 'application/json' });
+          navigator.sendBeacon('/api/auth/activity', blob);
+          return;
+        }
+
+        fetch('/api/auth/activity', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: payload,
+          keepalive: true
+        }).catch(error => console.warn('Không sao lưu được thời gian online:', error));
+      }
+
+      function getStoredQuizResults() {
+        try {
+          return JSON.parse(localStorage.getItem(QUIZ_RESULTS_STORAGE_KEY) || '[]');
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function getCurrentUserQuizResults() {
+        const userKey = getCurrentUserKey();
+        return getStoredQuizResults().filter(result => result.userKey === userKey);
+      }
+
+      function saveQuizResultLocal(payload) {
+        const results = getStoredQuizResults();
+        results.unshift({
+          ...payload,
+          id: Date.now(),
+          userKey: getCurrentUserKey(),
+          createdAt: new Date().toISOString()
+        });
+        localStorage.setItem(QUIZ_RESULTS_STORAGE_KEY, JSON.stringify(results.slice(0, 80)));
+      }
+
+      function getDashboardCalendarEvents() {
+        try {
+          return JSON.parse(localStorage.getItem('studyPlanEvents') || '[]');
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function average(values) {
+        if (!values.length) return 0;
+        return Math.round(values.reduce((sum, value) => sum + value, 0) / values.length);
+      }
+
+      function formatStudyMinutes(minutes) {
+        const safeMinutes = Math.max(0, Math.round(minutes));
+        const hours = Math.floor(safeMinutes / 60);
+        const mins = safeMinutes % 60;
+        return `${hours}h ${mins}m`;
+      }
+
+      function updateText(id, value) {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+      }
+
+      function calculateTopicMastery(results, subject, topicKey) {
+        let total = 0;
+        let correct = 0;
+        const normalizedTopic = topicKey.toLowerCase();
+
+        results
+          .filter(result => result.subject === subject)
+          .forEach(result => {
+            const questionMap = new Map((result.questions || []).map(question => [String(question.id), question]));
+            (result.answers || []).forEach(answer => {
+              const question = questionMap.get(String(answer.questionId));
+              const topic = String(question?.topic || '').toLowerCase();
+              if (topic.includes(normalizedTopic)) {
+                total++;
+                if (answer.isCorrect) correct++;
+              }
+            });
+          });
+
+        return total ? Math.round((correct / total) * 100) : 0;
+      }
+
+      function renderStudentDashboardData() {
+        const currentUser = getCurrentUser();
+        if (!currentUser || currentUser.role === 'teacher') return;
+
+        const results = getCurrentUserQuizResults();
+        const totalQuestions = results.reduce((sum, result) => sum + Number(result.totalQuestions || 0), 0);
+        const averageScore = average(results.map(result => Number(result.score || 0)));
+        const masteredTopics = new Set();
+
+        results.forEach(result => {
+          const questionMap = new Map((result.questions || []).map(question => [String(question.id), question]));
+          (result.answers || []).forEach(answer => {
+            if (!answer.isCorrect) return;
+            const question = questionMap.get(String(answer.questionId));
+            const topic = String(question?.topic || '').trim();
+            if (topic) masteredTopics.add(`${result.subject}-${topic}`);
+          });
+        });
+
+        const onlineMinutes = getCurrentOnlineMinutes();
+
+        updateText('studyTimeStat', formatStudyMinutes(onlineMinutes));
+        updateText('studyTimeTrend', onlineMinutes >= 1 ? 'Tính từ thời gian online' : 'Đang bắt đầu tính online');
+        updateText('solvedExercisesStat', totalQuestions);
+        updateText('solvedExercisesTrend', totalQuestions ? `${results.length} lượt làm bài` : 'Chưa có dữ liệu');
+        updateText('averageScoreStat', results.length ? (averageScore / 10).toFixed(1) : '0');
+        updateText('averageScoreTrend', results.length ? `${averageScore}% trung bình` : 'Chưa có dữ liệu');
+        updateText('masteredConceptsStat', masteredTopics.size);
+        updateText('masteredConceptsTrend', masteredTopics.size ? 'Từ các câu trả lời đúng' : 'Chưa có dữ liệu');
+
+        document.querySelectorAll('[data-skill-subject]').forEach(row => {
+          const subject = row.dataset.skillSubject;
+          const subjectResults = results.filter(result => result.subject === subject);
+          const subjectAverage = average(subjectResults.map(result => Number(result.score || 0)));
+          const fill = row.querySelector('.skill-fill');
+          const percent = row.querySelector('.skill-bar-wrap span');
+          const score = row.querySelector('.skill-score');
+          if (fill) fill.style.width = `${subjectAverage}%`;
+          if (percent) percent.textContent = `${subjectAverage}%`;
+          if (score) score.textContent = subjectResults.length ? (subjectAverage / 10).toFixed(1) : '0';
+        });
+
+        document.querySelectorAll('[data-subject-card]').forEach(card => {
+          const subject = card.dataset.subjectCard;
+          const subjectResults = results.filter(result => result.subject === subject);
+          const subjectAverage = average(subjectResults.map(result => Number(result.score || 0)));
+          const badge = card.querySelector('.gap-badge');
+          const action = card.querySelector('.btn-sm');
+
+          if (badge) badge.textContent = subjectResults.length ? `${subjectAverage}% trung bình` : 'Chưa có dữ liệu';
+          if (action) action.textContent = subjectResults.length ? `${subjectResults.length} bài đã làm` : 'Chưa có kế hoạch';
+
+          card.querySelectorAll('[data-topic-key]').forEach(item => {
+            const topicPercent = calculateTopicMastery(results, subject, item.dataset.topicKey);
+            const labelPercent = item.querySelector('.progress-label span:last-child');
+            const fill = item.querySelector('.progress-fill');
+            if (labelPercent) labelPercent.textContent = `${topicPercent}%`;
+            if (fill) fill.style.width = `${topicPercent}%`;
+          });
+        });
+
+        renderTodayJourney(results);
+      }
+
+      function renderTodayJourney(results) {
+        const timeline = document.getElementById('studentTimelineCard');
+        if (!timeline) return;
+
+        const todayKey = new Date().toISOString().slice(0, 10);
+        const events = getDashboardCalendarEvents()
+          .filter(event => event.date >= todayKey)
+          .sort((a, b) => `${a.date} ${a.time || ''}`.localeCompare(`${b.date} ${b.time || ''}`))
+          .slice(0, 3);
+
+        const eventItems = events.map(event => `
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <p>${escapeHtml(event.title)}</p>
+              <div class="timeline-time">${escapeHtml(event.date)}${event.time ? ` · ${escapeHtml(event.time)}` : ''}</div>
+            </div>
+          </div>
+        `).join('');
+
+        const latestResult = results[0];
+        const fallbackItem = latestResult ? `
+          <div class="timeline-item">
+            <div class="timeline-dot blue"></div>
+            <div class="timeline-content">
+              <p>Ôn lại bài ${escapeHtml(latestResult.subject || 'thi thử')}</p>
+              <div class="timeline-time">Điểm gần nhất: ${Number(latestResult.score || 0)}%</div>
+            </div>
+          </div>
+        ` : `
+          <div class="timeline-item">
+            <div class="timeline-dot gray"></div>
+            <div class="timeline-content"><p>không có lịch trình</p><div class="timeline-time"> </div></div>
+          </div>
+        `;
+
+        timeline.innerHTML = `
+          <h3> Hành trình hôm nay</h3>
+          <p class="sub" style="font-size:0.7rem; color:#6883a0;">Dựa trên lịch học và kết quả thi thử</p>
+          ${eventItems || fallbackItem}
+          <a href="#" class="top-card-action" style="margin-top: 12px; display: inline-block;">Xem lịch trình đầy đủ →</a>
+        `;
       }
 
       async function dashboardApiRequest(path, options = {}) {
@@ -3196,7 +3759,7 @@
               ...options
             });
             const data = await response.json().catch(() => ({}));
-            if (!response.ok) throw new Error(data.message || `HTTP ${response.status}`);
+            if (!response.ok) throw new Error(data.message || data.error || `HTTP ${response.status}`);
             return data;
           } catch (error) {
             lastError = error;
@@ -3228,6 +3791,8 @@
         const studentCards = document.querySelectorAll('.student-card');
         const teacherCards = document.querySelectorAll('.teacher-card');
         const studentStats = document.getElementById('studentStatsBlock');
+        const studentLearningOverview = document.getElementById('studentLearningOverview');
+        const studentSubjectsGrid = document.getElementById('studentSubjectsGrid');
         const studentTimeline = document.getElementById('studentTimelineCard');
         const dashboardHeading = document.getElementById('dashboardHeading');
         const dashboardSubheading = document.getElementById('dashboardSubheading');
@@ -3236,7 +3801,9 @@
 
         studentCards.forEach(card => card.style.display = isTeacher ? 'none' : 'block');
         teacherCards.forEach(card => card.style.display = isTeacher ? 'block' : 'none');
-        if (studentStats) studentStats.style.display = isTeacher ? 'none' : 'flex';
+        if (studentStats) studentStats.style.display = isTeacher ? 'none' : 'grid';
+        if (studentLearningOverview) studentLearningOverview.style.display = isTeacher ? 'none' : 'grid';
+        if (studentSubjectsGrid) studentSubjectsGrid.style.display = isTeacher ? 'none' : 'grid';
         if (studentTimeline) studentTimeline.style.display = isTeacher ? 'none' : 'block';
 
         if (isTeacher) {
@@ -3246,7 +3813,8 @@
           if (postsCountEl) postsCountEl.textContent = `${currentUser.postsCount || 0} bài`;
         } else {
           if (dashboardHeading) dashboardHeading.textContent = 'Chào mừng quay trở lại! 👋';
-          if (dashboardSubheading) dashboardSubheading.textContent = 'Hôm nay bạn có 3 lỗ hổng kiến thức cần củng cố và 1 bài thi thử môn Hóa.';
+          if (dashboardSubheading) dashboardSubheading.textContent = 'Dữ liệu học tập được cập nhật từ bài thi thử và lịch học của bạn.';
+          renderStudentDashboardData();
         }
       }
 
@@ -3279,7 +3847,20 @@
         if (profileRoleLabel) profileRoleLabel.textContent = isTeacher ? 'Hồ sơ giáo viên' : 'Hồ sơ học sinh';
         if (profileName) profileName.textContent = currentUser.name || '';
         if (profileEmail) profileEmail.textContent = currentUser.email || '';
-        if (profileAvatar) profileAvatar.textContent = (currentUser.name || ' ').charAt(0).toUpperCase();
+        if (profileAvatar) {
+          profileAvatar.innerHTML = '';
+          const avatarValue = currentUser.avatar || currentUser.avatarUrl;
+          if (avatarValue) {
+            const avatarImage = document.createElement('img');
+            avatarImage.src = avatarValue;
+            avatarImage.alt = 'Avatar cá nhân';
+            profileAvatar.classList.add('has-image');
+            profileAvatar.appendChild(avatarImage);
+          } else {
+            profileAvatar.classList.remove('has-image');
+            profileAvatar.textContent = (currentUser.name || ' ').charAt(0).toUpperCase();
+          }
+        }
         if (profileEmailInput) profileEmailInput.value = currentUser.email || '';
         if (profileFullName) profileFullName.value = currentUser.name || '';
 
@@ -3312,14 +3893,18 @@
         if (!currentUser) return;
 
         const profileFullName = document.getElementById('profileFullName')?.value.trim();
+        const profileEmail = document.getElementById('profileEmailInput')?.value.trim();
         const profileSchool = document.getElementById('profileSchool')?.value.trim();
         const profileClass = document.getElementById('profileClass')?.value.trim();
         const payload = {
           name: profileFullName || currentUser.name,
+          email: profileEmail || currentUser.email,
+          role: currentUser.role || 'student',
           school: profileSchool || '',
           className: '',
           teachingGrade: '',
-          teacherStatus: ''
+          teacherStatus: '',
+          avatar: currentUser.avatar || currentUser.avatarUrl || ''
         };
 
         if (currentUser.role === 'teacher') {
@@ -3334,40 +3919,207 @@
           payload.className = profileClass || '';
         }
 
+        const updatedUser = {
+          ...currentUser,
+          name: payload.name,
+          email: payload.email,
+          school: payload.school,
+          className: payload.className || currentUser.className || '',
+          teachingGrade: payload.teachingGrade || currentUser.teachingGrade || '',
+          teacherInfo: currentUser.role === 'teacher'
+            ? {
+                ...(currentUser.teacherInfo || {}),
+                school: payload.school,
+                grade: payload.teachingGrade,
+                teacherStatus: payload.teacherStatus
+              }
+            : currentUser.teacherInfo
+        };
+
+        persistCurrentUser(updatedUser);
+        updateProfilePage();
+        updateDashboardForRole();
+
         try {
+          if (!currentUser.id) {
+            alert('✅ Đã lưu hồ sơ trên trình duyệt.');
+            return;
+          }
+
           const result = await dashboardApiRequest(`/auth/users/${currentUser.id}`, {
             method: 'PUT',
             body: JSON.stringify(payload)
           });
 
-          persistCurrentUser(result.user);
+          const nextAvatar = result.user.avatar || result.user.avatarUrl || currentUser.avatar || currentUser.avatarUrl || '';
+          persistCurrentUser({ ...result.user, ...updatedUser, avatar: nextAvatar });
           updateProfilePage();
-          alert('✅ Đã lưu thông tin hồ sơ vào SQL.');
+          alert('✅ Đã lưu thông tin hồ sơ .');
         } catch (error) {
           console.error('Save profile error:', error);
-          alert(error.message || 'Không thể lưu hồ sơ vào SQL.');
+          alert('✅ Đã lưu hồ sơ trên trình duyệt. Chưa đồng bộ được với backend.');
         }
       }
+
+      const changeAvatarBtn = document.getElementById('changeAvatarBtn');
+      const removeAvatarBtn = document.getElementById('removeAvatarBtn');
+      const avatarFileInput = document.getElementById('avatarFileInput');
+      const profileAvatarButton = document.getElementById('profileAvatar');
+
+      changeAvatarBtn?.addEventListener('click', () => {
+        avatarFileInput?.click();
+      });
+
+      profileAvatarButton?.addEventListener('click', () => {
+        avatarFileInput?.click();
+      });
+
+      profileAvatarButton?.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          avatarFileInput?.click();
+        }
+      });
+
+      avatarFileInput?.addEventListener('change', event => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+          alert('Vui lòng chọn một file ảnh.');
+          event.target.value = '';
+          return;
+        }
+
+        if (file.size > 2 * 1024 * 1024) {
+          alert('Ảnh hơi lớn. Vui lòng chọn ảnh dưới 2MB.');
+          event.target.value = '';
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+          const currentUser = getCurrentUser();
+          if (!currentUser) return;
+          persistCurrentUser({ ...currentUser, avatar: reader.result });
+          updateProfilePage();
+          event.target.value = '';
+        };
+        reader.readAsDataURL(file);
+      });
+
+      removeAvatarBtn?.addEventListener('click', () => {
+        const currentUser = getCurrentUser();
+        if (!currentUser) return;
+        persistCurrentUser({ ...currentUser, avatar: '' });
+        updateProfilePage();
+      });
 
       applyRolePermissions();
       updateProfilePage();
       updateDashboardForRole();
 
       // Lịch
+      const CALENDAR_STORAGE_KEY = 'studyPlanEvents';
+      const calendarYear = 2026;
+      const calendarMonth = 3;
+
+      function getCalendarEvents() {
+        try {
+          return JSON.parse(localStorage.getItem(CALENDAR_STORAGE_KEY) || '[]');
+        } catch (error) {
+          return [];
+        }
+      }
+
+      function saveCalendarEvents(events) {
+        localStorage.setItem(CALENDAR_STORAGE_KEY, JSON.stringify(events));
+      }
+
       function buildCalendar() {
-        const year = 2026, month = 3;
+        const year = calendarYear, month = calendarMonth;
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const grid = document.getElementById('calendarGrid');
         if(!grid) return;
+        const events = getCalendarEvents();
         grid.innerHTML = '';
-        ['CN','T2','T3','T4','T5','T6','T7'].forEach(day => { const d = document.createElement('div'); d.className = 'cal-weekday'; d.innerText = day; grid.appendChild(d); });
+        ['T2','T3','T4','T5','T6','T7','CN'].forEach(day => { const d = document.createElement('div'); d.className = 'cal-weekday'; d.innerText = day; grid.appendChild(d); });
         let startOffset = firstDay === 0 ? 6 : firstDay - 1;
-        for(let i=0;i<startOffset;i++) { const e = document.createElement('div'); e.className = 'cal-day'; e.innerText = ''; grid.appendChild(e); }
+        for(let i=0;i<startOffset;i++) { const e = document.createElement('div'); e.className = 'cal-day empty'; e.innerText = ''; grid.appendChild(e); }
         const today = new Date();
-        for(let d=1;d<=daysInMonth;d++) { const div = document.createElement('div'); div.className = 'cal-day'; if(today.getDate()===d && today.getFullYear()===2026 && today.getMonth()===3) div.classList.add('today'); div.innerText = d; grid.appendChild(div); }
+        for(let d=1;d<=daysInMonth;d++) {
+          const div = document.createElement('div');
+          const dateKey = `${year}-04-${String(d).padStart(2, '0')}`;
+          div.className = 'cal-day';
+          if(today.getDate()===d && today.getFullYear()===year && today.getMonth()===month) div.classList.add('today');
+
+          const dateLabel = document.createElement('span');
+          dateLabel.className = 'cal-date';
+          dateLabel.innerText = d;
+          div.appendChild(dateLabel);
+
+          events
+            .filter(event => event.date === dateKey)
+            .sort((a, b) => (a.time || '').localeCompare(b.time || ''))
+            .forEach(event => {
+              const eventEl = document.createElement('span');
+              eventEl.className = 'cal-event';
+              eventEl.innerText = `${event.time ? event.time + ' · ' : ''}${event.title}`;
+              div.appendChild(eventEl);
+            });
+
+          grid.appendChild(div);
+        }
       }
       buildCalendar();
+
+      const addCalendarEventBtn = document.getElementById('addCalendarEventBtn');
+      const calendarEventForm = document.getElementById('calendarEventForm');
+      const cancelCalendarEventBtn = document.getElementById('cancelCalendarEventBtn');
+
+      addCalendarEventBtn?.addEventListener('click', () => {
+        calendarEventForm?.classList.add('show');
+        document.getElementById('calendarEventTitle')?.focus();
+      });
+
+      cancelCalendarEventBtn?.addEventListener('click', () => {
+        calendarEventForm?.classList.remove('show');
+        calendarEventForm?.reset();
+        const dateInput = document.getElementById('calendarEventDate');
+        if (dateInput) dateInput.value = '2026-04-01';
+      });
+
+      calendarEventForm?.addEventListener('submit', event => {
+        event.preventDefault();
+        const titleInput = document.getElementById('calendarEventTitle');
+        const dateInput = document.getElementById('calendarEventDate');
+        const timeInput = document.getElementById('calendarEventTime');
+        const title = titleInput.value.trim();
+        const date = dateInput.value;
+        const time = timeInput.value;
+
+        if (!title || !date) {
+          alert('Vui lòng nhập tên sự kiện và ngày.');
+          return;
+        }
+
+        const eventMonth = new Date(`${date}T00:00:00`).getMonth();
+        const eventYear = new Date(`${date}T00:00:00`).getFullYear();
+        if (eventYear !== calendarYear || eventMonth !== calendarMonth) {
+          alert('Lịch hiện đang ở tháng 4/2026, vui lòng chọn ngày trong tháng này.');
+          return;
+        }
+
+        const events = getCalendarEvents();
+        events.push({ id: Date.now(), title, date, time });
+        saveCalendarEvents(events);
+        calendarEventForm.reset();
+        dateInput.value = '2026-04-01';
+        calendarEventForm.classList.remove('show');
+        buildCalendar();
+        renderStudentDashboardData();
+      });
 
       // AI
       const aiRes = document.getElementById('aiResult');
@@ -3384,7 +4136,7 @@
       document.getElementById('explainBtn')?.addEventListener('click',()=>explain('full'));
       document.getElementById('checkSolutionBtn')?.addEventListener('click',()=>aiRes.innerHTML="🔍 Kiểm tra lời giải: AI phát hiện lỗi thiếu điều kiện xác định.");
 
-      // Tạo đề thi từ dataset
+      // Tạo đề thi từ quiz-dataset.json
       let quizDataset = [];
       let currentExam = [];
       let userAnswers = {};
@@ -3394,36 +4146,44 @@
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const data = await response.json();
-        return Array.isArray(data.questions) ? data.questions : [];
-      }
+        const questions = Array.isArray(data) ? data : (Array.isArray(data.questions) ? data.questions : []);
 
-      async function seedQuizDatasetFromSql(baseUrl) {
-        const response = await fetch(`${baseUrl}/seed`, { method: 'POST' });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return response.json();
+        return questions.map((question, index) => ({
+          id: question.id ?? index + 1,
+          subject: String(question.subject || ''),
+          grade: String(question.grade || ''),
+          topic: String(question.topic || ''),
+          difficulty: String(question.difficulty || ''),
+          question: String(question.question || ''),
+          options: Array.isArray(question.options) ? question.options.map(String) : [],
+          answer: String(question.answer || ''),
+          explanation: String(question.explanation || '')
+        }));
       }
 
       async function loadQuizDataset() {
-        const endpoints = ['/api/questions', 'http://localhost:5000/api/questions'];
+        const endpoints = [
+          'quiz-dataset.json',
+          '/quiz-dataset.json',
+          '/api/questions',
+          'http://localhost:5000/quiz-dataset.json',
+          'http://localhost:5000/api/questions'
+        ];
 
         for (const endpoint of endpoints) {
           try {
             quizDataset = await fetchQuizQuestions(endpoint);
 
-            if (quizDataset.length === 0) {
-              const seedResult = await seedQuizDatasetFromSql(endpoint);
-              console.log('Seeded quiz-dataset.sql:', seedResult.total, 'questions');
-              quizDataset = await fetchQuizQuestions(endpoint);
+            if (quizDataset.length > 0) {
+              console.log('Dataset loaded from JSON:', quizDataset.length, 'questions');
+              return;
             }
-
-            console.log('Dataset loaded from SQL:', quizDataset.length, 'questions');
-            return;
           } catch (error) {
             console.warn(`Không tải được câu hỏi từ ${endpoint}:`, error);
           }
         }
 
-        alert('Không thể tải hoặc nạp quiz-dataset.sql. Vui lòng kiểm tra backend, DATABASE_URL và file quiz-dataset.sql.');
+        alert('Không thể tải quiz-dataset.json. Vui lòng chạy qua Apache/XAMPP hoặc npm start để trình duyệt có thể đọc file JSON.');
       }
 
       loadQuizDataset();
@@ -3490,9 +4250,9 @@
           <div class="exam-header">
             <h3>📝 Đề thi ${document.getElementById('subjectSelect').options[document.getElementById('subjectSelect').selectedIndex].text}</h3>
             <div class="exam-info">
-              <span>📚 ${questions.length} câu hỏi</span>
-              <span>🎯 ${document.getElementById('difficultySelect').value || 'Tất cả độ khó'}</span>
-              <span>⏱️ Thời gian: ${Math.ceil(questions.length * 1.5)} phút</span>
+              <span> ${questions.length} câu hỏi</span>
+              <span> ${document.getElementById('difficultySelect').value || 'Tất cả độ khó'}</span>
+              <span> Thời gian: ${Math.ceil(questions.length * 1.5)} phút</span>
             </div>
           </div>
 
@@ -3539,13 +4299,13 @@
         const currentUser = getCurrentUser();
         const statusEl = document.getElementById('quizSaveStatus');
 
-        if (!currentUser || !currentUser.id) {
-          if (statusEl) statusEl.textContent = 'Chưa đăng nhập nên kết quả chưa được lưu vào SQL.';
+        if (!currentUser) {
+          if (statusEl) statusEl.textContent = 'Chưa đăng nhập nên kết quả chưa được lưu.';
           return;
         }
 
         const payload = {
-          userId: currentUser.id,
+          userId: currentUser.id || currentUser.email || 'guest',
           subject: document.getElementById('subjectSelect').value,
           grade: document.getElementById('gradeSelect').value,
           difficulty: document.getElementById('difficultySelect').value,
@@ -3571,6 +4331,9 @@
           }))
         };
 
+        saveQuizResultLocal(payload);
+        renderStudentDashboardData();
+
         const endpoints = ['/api/quiz-results', 'http://localhost:5000/api/quiz-results'];
 
         for (const endpoint of endpoints) {
@@ -3591,7 +4354,7 @@
           }
         }
 
-        if (statusEl) statusEl.textContent = 'Chưa lưu được vào SQL. Kiểm tra backend, DATABASE_URL và bảng quiz_results.';
+        if (statusEl) statusEl.textContent = 'Đã lưu tạm trên trình duyệt, chưa lưu được vào SQL. Kiểm tra backend, DATABASE_URL và bảng quiz_results.';
       }
 
       function submitExam() {
@@ -3629,7 +4392,7 @@
               <div id="quizSaveStatus" class="review-stats">Đang lưu kết quả vào SQL...</div>
             </div>
             <div class="result-actions">
-              <button id="reviewExamBtn" class="btn btn-primary">📖 Ôn lại</button>
+              <button id="reviewExamBtn" class="btn btn-primary"> Ôn lại</button>
               <button id="newExamBtn" class="btn btn-outline">🔄 Làm đề mới</button>
             </div>
           </div>
@@ -3811,7 +4574,7 @@
 
           // Get level color
           const levelColors = {
-            'co-ban': '#10b981', 'trung-binh': '#f59e0b', 'nang-cao': '#ef4444', 'chuyen': '#8b5cf6'
+            'co-ban': '#60a5fa', 'trung-binh': '#2563eb', 'nang-cao': '#1d4ed8', 'chuyen': '#64748b'
           };
 
           // Map type to category
@@ -3963,7 +4726,7 @@
               return;
             }
 
-            alert(`👁️ XEM TRƯỚC CÂU HỎI\n\nMôn: ${subject}\nLớp: ${grade}\nChủ đề: ${topic}\nĐộ khó: ${difficulty}\n\nCâu hỏi: ${questionText}\nA. ${option1}\nB. ${option2}\nC. ${option3}\nD. ${option4}\n\nĐáp án đúng: ${answerKey}`);
+            alert(` XEM TRƯỚC CÂU HỎI\n\nMôn: ${subject}\nLớp: ${grade}\nChủ đề: ${topic}\nĐộ khó: ${difficulty}\n\nCâu hỏi: ${questionText}\nA. ${option1}\nB. ${option2}\nC. ${option3}\nD. ${option4}\n\nĐáp án đúng: ${answerKey}`);
           });
         }
 
@@ -4001,7 +4764,7 @@
             'co-ban': 'Cơ bản', 'trung-binh': 'Trung bình', 'nang-cao': 'Nâng cao', 'chuyen': 'Chuyên sâu'
           };
 
-          alert(`👁️ XEM TRƯỚC TÀI LIỆU
+          alert(` XEM TRƯỚC TÀI LIỆU
 
  Tên: ${title}
  Môn: ${subjectNames[subject]}
@@ -4027,6 +4790,3 @@
     </script>
   </body>
 </html>
-
-
-
