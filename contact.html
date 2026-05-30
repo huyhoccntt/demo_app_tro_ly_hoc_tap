@@ -192,7 +192,7 @@
 </footer>
 
 <script>
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     const name    = document.getElementById('cName').value.trim();
     const email   = document.getElementById('cEmail').value.trim();
@@ -209,11 +209,12 @@
     btn.disabled = true;
     btn.textContent = 'Đang gửi...';
 
-    // Save to localStorage as demo
+    const payload = { name, email, subject: document.getElementById('cSubject').value, message };
     const contacts = JSON.parse(localStorage.getItem('studymate_contacts') || '[]');
-    contacts.push({ name, email, subject: document.getElementById('cSubject').value, message, sent_at: new Date().toISOString() });
+    contacts.push({ ...payload, sent_at: new Date().toISOString() });
     localStorage.setItem('studymate_contacts', JSON.stringify(contacts));
 
+    /*
     setTimeout(() => {
       msgBox.className = 'msg-box success';
       msgBox.textContent = '✅ Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi sớm nhất.';
@@ -221,6 +222,12 @@
       btn.disabled = false;
       btn.textContent = 'Gửi tin nhắn →';
     }, 800);
+    */
+    msgBox.className = 'msg-box success';
+    msgBox.textContent = 'Tin nhan da duoc gui thanh cong!';
+    document.getElementById('contactForm').reset();
+    btn.disabled = false;
+    btn.textContent = 'Gui tin nhan';
   });
 </script>
 

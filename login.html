@@ -609,13 +609,22 @@
     }
 
     setLoading(true);
-    await new Promise(r => setTimeout(r, 600)); // natural feel
+    await new Promise(r => setTimeout(r, 300)); // natural feel
 
     try {
       const user = doLogin(email, password);
-      const userData = { id: user.id, name: user.name, email: user.email, role: user.role, avatar: user.avatar, status: user.status, created_at: user.created_at };
+      const token = 'local-' + user.id;
+      const userData = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        avatar: user.avatar,
+        status: user.status,
+        created_at: user.created_at || user.createdAt
+      };
       sessionStorage.setItem('currentUser', JSON.stringify(userData));
-      sessionStorage.setItem('authToken', 'local-' + user.id);
+      sessionStorage.setItem('authToken', token || 'local-' + user.id);
       showMsg(`Chào mừng ${user.name}! Đang chuyển trang...`, 'success');
       setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
     } catch (err) {

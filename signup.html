@@ -482,8 +482,6 @@
   }
 
   async function authApiRequest(path, payload) {
-    await new Promise(resolve => setTimeout(resolve, 500));
-
     const users = getUsers();
     if (users.some(u => u.email.toLowerCase() === payload.email.toLowerCase())) {
       throw new Error('Email này đã được đăng ký. Vui lòng dùng email khác.');

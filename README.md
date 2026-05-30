@@ -1,28 +1,33 @@
-﻿# StudyMate AI
+# StudyMate AI
 
-Ban hien co the chay phien ban HTML truc tiep trong XAMPP ma khong can backend rieng.
+StudyMate AI la demo ung dung hoc tap chay tinh bang HTML/CSS/JS, khong dung backend rieng.
 
 ## Tep chinh
 
 - `index.html`: trang gioi thieu
-- `login.html`: dang nhap bang du lieu luu trong `localStorage`
-- `signup.html`: dang ky tai khoan moi ngay trong trinh duyet
-- `dashboard.html`: bang dieu khien, chat offline va thu vien tai lieu
-- `quiz-dataset.xlsx`: file nguon bo cau hoi
-- `quiz-dataset.sql`: seed SQL cho bang `quiz_questions`
-- `scripts/convert-quiz-xlsx-to-sql.js`: chuyen Excel sang SQL khi can cap nhat dataset
+- `login.html`: dang nhap demo bang `localStorage`
+- `signup.html`: dang ky tai khoan demo bang `localStorage`
+- `dashboard.html`: bang dieu khien, tro ly AI, tao de thi va thu vien tai lieu
+- `contact.html`: form lien he luu tam tren trinh duyet
+- `quiz-dataset.json`: bo cau hoi cho tinh nang tao de
+- `users.json`: du lieu tai khoan demo co san
 
 ## Cach chay
 
-1. Mo XAMPP va bat Apache.
-2. Dat project trong `c:\xampp\htdocs`.
-3. Import `backend/schema.sql`, sau do import `quiz-dataset.sql` vao database PostgreSQL.
-4. Chay backend Node o cong 5000 de dashboard doc cau hoi tu `/api/questions`.
-5. Truy cap `http://localhost/` hoac mo truc tiep `http://localhost/dashboard.html`.
+Ban co the mo truc tiep file HTML, hoac chay static server de trinh duyet doc duoc `quiz-dataset.json`:
+
+```bash
+npm start
+```
+
+Sau do mo:
+
+```text
+http://localhost:5000
+```
 
 ## Ghi chu
 
-- Dang nhap, dang ky va cau hoi giao vien duoc luu bang `localStorage` tren trinh duyet hien tai.
-- Chat AI trong `dashboard.html` dang chay o che do offline, khong goi backend.
-- Phan tao de thi trong `dashboard.html` doc cau hoi tu bang SQL `quiz_questions` thong qua backend.
-
+- Khong con `server.js`, backend API, `.env` hay database.
+- Dang nhap, dang ky, lien he, lich hoc, tai lieu, cau hoi giao vien va ket qua quiz duoc luu trong `localStorage`.
+- AI Gemini duoc goi truc tiep tu `dashboard.html`.
