@@ -2193,7 +2193,7 @@
 
 <script>
     // Gemini chạy trực tiếp trong trình duyệt, không cần server.js.
-    const GEMINI_API_KEY = "AQ.Ab8RN6JDzgCrHkmgDW8AemirQZRaqPE0DIKOpl10oWnIHQy6vw";
+    const GEMINI_API_KEY = "AQ.Ab8RN6Lia1orBuPyInbQajyDVwHYIbsctFQmAQ6FOCdJqdQk1g";  // key này chỉ có thể dùng cho mục đích demo, đã bị giới hạn quyền
     const GEMINI_MODEL = "gemini-2.5-flash";
     const GEMINI_STATUS_URL = `https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`;
     const GEMINI_CHAT_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
@@ -2226,7 +2226,7 @@ Yêu cầu phong cách:
     async function checkApiStatus() {
         try {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 2500);
+            const timeoutId = setTimeout(() => controller.abort(), 4500);
             const testResponse = await fetch(GEMINI_STATUS_URL, {
                 signal: controller.signal
             });
@@ -2266,7 +2266,7 @@ Yêu cầu phong cách:
                 generationConfig: {
                     temperature: 0.55,
                     topP: 0.9,
-                    maxOutputTokens: 1200
+                    maxOutputTokens: 1500,
                 }
             })
         });

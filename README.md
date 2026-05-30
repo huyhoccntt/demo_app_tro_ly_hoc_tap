@@ -1,6 +1,6 @@
 # StudyMate AI
 
-StudyMate AI la demo ung dung hoc tap chay tinh bang HTML/CSS/JS, khong dung backend rieng.
+Trợ lý học đường AI la demo ung dung hoc tap chay tinh bang HTML/CSS/JS, khong dung backend rieng.
 
 ## Tep chinh
 
@@ -16,18 +16,15 @@ StudyMate AI la demo ung dung hoc tap chay tinh bang HTML/CSS/JS, khong dung bac
 
 Ban co the mo truc tiep file HTML, hoac chay static server de trinh duyet doc duoc `quiz-dataset.json`:
 
-```bash
 npm start
+
 ```
 
-Sau do mo:
 
-```text
-http://localhost:5000
-```
 
 ## Ghi chu
 
 - Khong con `server.js`, backend API, `.env` hay database.
 - Dang nhap, dang ky, lien he, lich hoc, tai lieu, cau hoi giao vien va ket qua quiz duoc luu trong `localStorage`.
 - AI Gemini duoc goi truc tiep tu `dashboard.html`.
+```
